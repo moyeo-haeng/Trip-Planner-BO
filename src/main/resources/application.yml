@@ -1,0 +1,13 @@
+# application-db.yml
+spring:
+  profiles:
+    include: db
+
+# after update html, not restart server
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      enabled: true
+  thymeleaf:
+    cache: false
