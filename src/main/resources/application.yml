@@ -13,5 +13,5 @@ spring:
       enabled: true
     restart:
       enabled: true
-  thymeleaf:
-    cache: false
+    thymeleaf:
+      cache: false
