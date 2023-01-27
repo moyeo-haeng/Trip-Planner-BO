@@ -18,6 +18,6 @@ public class CommonController {
 
     @GetMapping("/head")
     public String head() {
-        return "heaDER";
+        return "common/fragments/header";
     }
 }

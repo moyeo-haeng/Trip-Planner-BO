@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<th:block th:fragment="configFragment">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>test</title>
+
+    <!-- 공통 css -->
+    <th:block th:replace="common/fragments/styles"></th:block>
+
+    <!-- 공통 js -->
+    <th:block th:replace="common/fragments/scripts"></th:block>
+
+  </head>
+</th:block>
+</html>
