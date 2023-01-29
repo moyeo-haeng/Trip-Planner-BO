@@ -1,6 +1,6 @@
 # Trip-Planner-BO
 
-pr 테스트..
+whyyyyy
 
 ## 참고
 나중에 지울 거임
