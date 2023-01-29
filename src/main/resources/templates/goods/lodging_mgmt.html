@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>숙소관리</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/css/bootstrap-theme.css"/>
+
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid;
+        }
+        th, td {
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-primary">
+
+<div class="container">
+    <div>
+        <section>
+            <div>
+                <div>
+                    <form id="srchForm" onsubmit="return false;">
+                        <div>
+                            <table>
+                                <caption> 숙소 관리</caption>
+                                <colgroup>
+                                    <col style="width:150px">
+                                    <col style="width:auto">
+                                    <col style="width:150px">
+                                    <col style="width:auto">
+                                </colgroup>
+                                <tbody>
+                                <tr>
+                                    <th scope="row">
+                                        <span><label for="dateSearchType">기간</label></span>
+                                    </th>
+
+                                    <td colspan="3">
+										<span class="slt">
+											<select id="dateSearchType" name="dateSearchType">
+												<option value="start">시작일</option>
+						                        <option value="end">종료일</option>
+						                        <option value="ing">진행중</option>
+											</select>
+										</span>
+
+                                        <span>
+											<button type="button">오늘</button>
+											<button type="button">1주일</button>
+											<button type="button">1개월</button>
+											<button type="button">3개월</button>
+										</span>
+                                        <span>
+											<span>
+												<input type="text" title="시작일 선택">
+												<button type="button"><em class="ir">달력에서 선택</em></button>
+											</span>
+											<em class="ts" id="ts">~</em>
+											<span class="ptxt-date">
+												<input type="text" title="종료일 선택">
+												<button type="button"><em class="ir">달력에서 선택</em></button>
+											</span>
+										</span>
+                                        <span class="chk" id="chk" style="">
+											<input type="checkbox" id="searchDateUse_chk"><label
+                                                for="searchDateUse_chk">기간 미사용</label>
+											<input type="hidden" id="searchDateUse" name="searchDateUse" value="Y">
+										</span>
+
+                                        <span class="ptxt-date" id="ingCalendar" style="display: none;" data-init="Y">
+											<input type="text" title="진행중인날짜 선택">
+											<button type="button"><em class="ir">달력에서 선택</em></button>
+										</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <span><label for="lodgingCd">숙소구분<label></span>
+                                    </th>
+                                    <td>
+                                        <span class="chk">
+                                            <input type="radio" value="" name="lodgingCd" id="lodgingCd1"
+                                                   checked="checked">
+                                            <label for="lodgingCd1">전체</label>
+                                        </span>
+
+                                        <span class="chk">
+                                            <input type="radio" value="00" name="lodgingCd" id="lodgingCd2">
+                                            <label for="lodgingCd2">호텔</label>
+                                        </span><span class="chk">
+                                            <input type="radio" value="10" name="lodgingCd" id="lodgingCd3">
+                                            <label for="lodgingCd3">게스트하우스</label>
+                                        </span><span class="chk">
+                                            <input type="radio" value="30" name="lodgingCd" id="lodgingCd4">
+                                            <label for="lodgingCd4">펜션/풀빌라</label>
+                                        </span><span class="chk">
+                                            <input type="radio" value="40" name="lodgingCd" id="lodgingCd5">
+                                            <label for="lodgingCd5">캠핑/글램핑</label>
+                                        </span>
+                                    </td>
+                                    <th scope="row">
+                                        <span><label for="useYn">사용여부</label></span>
+                                    </th>
+                                    <td>
+                                        <span class="chk">
+                                            <input type="radio" value="" name="dispYn" id="dispYn6" checked="checked">
+                                            <label for="dispYn6">전체</label>
+                                        </span>
+                                        <span class="chk">
+                                            <input type="radio" value="Y" name="dispYn" id="dispYn7">
+                                            <label for="dispYn7">Y</label>
+                                        </span><span class="chk">
+                                            <input type="radio" value="N" name="dispYn" id="dispYn8">
+                                            <label for="dispYn8">N</label>
+                                        </span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <span><label for="countryCd">나라</label></span>
+                                    </th>
+                                    <td>
+                                       <span>
+											<select id="countryCd" name="countryCd">
+												<option>전체</option>
+                                                <option>국내</option>
+						                        <option>일본</option>
+                                                <option>동남아시아</option>
+                                                <option>유럽</option>
+                                                <option>미국</option>
+											</select>
+										</span>
+                                    </td>
+                                    <th scope="row">
+                                        <span><label for="areaCd">지역</label></span>
+                                    </th>
+                                    <td>
+                                       <span>
+											<select id="areaCd" name="areaCd">
+												<option>전체</option>
+						                        <option>서울</option>
+                                                <option>제주</option>
+											</select>
+										</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">
+                                        <span><label for="lodgingRank">등급<label></span>
+                                    </th>
+                                    <td>
+                                        <span class="chk">
+                                            <input type="radio" value="" name="lodgingRank" id="lodgingRank0">
+                                            <label for="lodgingRank0">전체</label>
+                                        </span>
+
+                                        <span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank1">
+                                            <label for="lodgingRank1">1성급</label>
+                                        </span><span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank2">
+                                            <label for="lodgingRank2">2성급</label>
+                                        </span><span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank3">
+                                            <label for="lodgingRank3">3성급</label>
+                                        </span><span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank4">
+                                            <label for="lodgingRank4">4성급</label>
+                                        </span>
+                                        </span><span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank5">
+                                            <label for="lodgingRank5">5성급</label>
+                                        </span>
+                                    </td>
+                                    <th scope="row">
+                                        <span><label for="lodgingType">숙소조건</label></span>
+                                    </th>
+                                    <td>
+										<span>
+											<select id="lodgingType" name="lodgingType">
+												<option>숙소번호</option>
+						                        <option>숙소명</option>
+											</select>
+										</span>
+                                        <span class="ptxt wp30">
+											<input type="text" id="scrhCd" name="scrhCd">
+											<button class="cls" type="button"><em class="ir">삭제</em></button>
+										</span>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="cts-btns">
+                <button type="button" class="btn pg ln" btn-id="resetBtn"><em>초기화</em></button>
+                <button type="button" class="btn pg" btn-id="searchBtn"><em>조회</em></button>
+            </div>
+        </section>
+
+        <!-- grid(페이징) -->
+        <section class="dg-unit gcol">
+            <div>
+                <div id="grid_wrap" style="width: 100%; height: 480px; margin: 0px auto; position: relative;">
+                    <div class="aui-grid"
+                         style="position: relative; box-sizing: content-box; overflow: hidden; width: 1035px; height: 478px; touch-action: none;">
+
+                        <input class="aui-textinputer"
+                               style="padding: 0px 4px; overflow: hidden; z-index: -1; position: fixed; width: 1px; height: 1px; left: -20000px; top: 0px;"
+                               type="text" autocomplete="off" aria-hidden="true">
+                        <div class="aui-grid-content-panel-mask"
+                             style="position: absolute; overflow: hidden; width: 965px; height: 424px; left: 56px; top: 40px;">
+                            <div style="position: absolute; width: 1041px; height: 424px; transform: translate(0px, 0px);">
+                                <div class="aui-grid-main-panel"
+                                     style="position: absolute; width: 1041px; height: 424px; left: 0px; top: 0px;">
+                                    <div class="aui-grid-header-panel"
+                                         style="position: absolute; width: 1041px; height: 26px; left: 0px; top: 0px;">
+                                        <table class="aui-grid-table"
+                                               style="table-layout:fixed !important; width:0px !important">
+                                            <tbody>
+                                            <tr style="border:0px none !important;">
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 120px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 140px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 140px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 100px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 140px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 100px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 120px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 100px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 80px; height: 0px;"></th>
+                                            </tr>
+                                            <tr style="height: 26px;">
+                                                <td class="aui-grid-default-header">
+                                                    <div class="aui-grid-renderer-base aui-grid-header-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; overflow-wrap: normal; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        <span>숙소번호</span></div>
+                                                </td>
+                                                <td class="aui-grid-default-header">
+                                                    <div class="aui-grid-renderer-base aui-grid-header-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; overflow-wrap: normal; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        <span>숙소명</span></div>
+                                                </td>
+                                                <td class="aui-grid-default-header">
+                                                    <div class="aui-grid-renderer-base aui-grid-header-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; overflow-wrap: normal; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        <span>숙소구분</span></div>
+                                                </td>
+                                                <td class="aui-grid-default-header">
+                                                    <div class="aui-grid-renderer-base aui-grid-header-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; overflow-wrap: normal; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        <span>나라</span></div>
+                                                </td>
+                                                <td class="aui-grid-default-header">
+                                                    <div class="aui-grid-renderer-base aui-grid-header-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; overflow-wrap: normal; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        <span>지역</span></div>
+                                                </td>
+                                                <td class="aui-grid-default-header">
+                                                    <div class="aui-grid-renderer-base aui-grid-header-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; overflow-wrap: normal; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        <span>등급</span></div>
+                                                </td>
+                                                <td class="aui-grid-default-header">
+                                                    <div class="aui-grid-renderer-base aui-grid-header-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; overflow-wrap: normal; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        <span>사용여부</span></div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="aui-grid-body-panel"
+                                         style="overflow: hidden; position: absolute; width: 1041px; height: 398px; left: 0px; top: 26px;">
+                                        <table class="aui-grid-table"
+                                               style="table-layout:fixed !important; width:0px !important">
+                                            <tbody>
+                                            <tr style="border:0px none !important;">
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 120px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 140px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 140px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 100px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 140px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 100px; height: 0px;"></th>
+                                                <th scope="col"
+                                                    style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 120px; height: 0px;"></th>
+                                              </tr>
+                                            <tr class="aui-grid-row-background" style="height: 26px;">
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        100
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        제주신화월드 호텔앤리조트
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        호텔
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base aui-grid-image-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        국내
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        제주
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        5성급
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column my-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        Y
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="aui-grid-alternative-row-background" style="height: 26px;">
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        101
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        신라스테이 해운대
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        호텔
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base aui-grid-image-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                       국내
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        부산
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        4성급
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column my-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        Y
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="aui-grid-row-background" style="height: 26px;">
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        102
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        쿠 호스텔 오사카
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        게스트하우스
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base aui-grid-image-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        일본
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        오사카
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column my-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        N
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="aui-grid-alternative-row-background" style="height: 26px;">
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        103
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        사노우바 다낭 호텔
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        호텔
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base aui-grid-image-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        동남아
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        다낭
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        3성급
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column my-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        Y
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr class="aui-grid-row-background" style="height: 26px;">
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        104
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        가평 펜션
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        펜션/풀빌라
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base aui-grid-image-renderer"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+                                                        국내
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 132px; max-height: 24px;">
+                                                        가평
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 92px; max-height: 24px;">
+
+                                                    </div>
+                                                </td>
+                                                <td class="aui-grid-default-column my-column">
+                                                    <div class="aui-grid-renderer-base"
+                                                         style="padding: 0px 4px; overflow: hidden; white-space: nowrap; width: 112px; max-height: 24px;">
+                                                        N
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="aui-grid-footer-panel"
+                                         style="position: absolute; display: none; width: 1041px; height: 0px; left: 0px; top: 424px;"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="aui-grid-left-main-panel"
+                             style="overflow: hidden; position: absolute; left: 0px; top: 40px; width: 56px; height: 424px;">
+                            <div class="aui-grid-header-panel"
+                                 style="position: absolute; width: 56px; height: 26px; left: 0px; top: 0px;">
+                                <table class="aui-grid-table"
+                                       style="table-layout:fixed !important; width:0px !important">
+                                    <tbody>
+                                    <tr style="border:0px none !important;">
+                                        <th scope="col"
+                                            style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 40px; height: 0px;"></th>
+                                        <th scope="col"
+                                            style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 16px; height: 0px;"></th>
+                                    </tr>
+                                    <tr style="height: 26px;">
+                                        <td class="aui-grid-default-header aui-grid-row-num-header">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="padding: 0px 2px; overflow: hidden; white-space: nowrap; overflow-wrap: normal; width: 36px;">
+                                                No.
+                                            </div>
+                                        </td>
+                                        <td class="aui-grid-default-header aui-grid-row-state-header">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="padding: 0px; overflow: hidden; width: 16px; height: 1px;"></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="aui-grid-body-panel"
+                                 style="overflow: hidden; position: absolute; width: 56px; height: 398px; left: 0px; top: 26px;">
+                                <table class="aui-grid-table"
+                                       style="table-layout:fixed !important; width:0px !important">
+                                    <tbody>
+                                    <tr style="border:0px none !important;">
+                                        <th scope="col"
+                                            style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 40px; height: 0px;"></th>
+                                        <th scope="col"
+                                            style="visibility: hidden !important; margin: 0px !important; padding: 0px !important; font-size: 0px !important; line-height: 0 !important; width: 16px; height: 0px;"></th>
+                                    </tr>
+                                    <tr class="aui-grid-row-background" style="height: 26px;">
+                                        <td class="aui-grid-row-num-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px 2px; width: 36px; display: block; max-height: 24px;">
+                                                1
+                                            </div>
+                                        </td>
+                                        <td class="aui-grid-row-state-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px; width: 16px; height: 1px;"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="aui-grid-alternative-row-background" style="height: 26px;">
+                                        <td class="aui-grid-row-num-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px 2px; width: 36px; display: block; max-height: 24px;">
+                                                2
+                                            </div>
+                                        </td>
+                                        <td class="aui-grid-row-state-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px; width: 16px; height: 1px;"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="aui-grid-row-background" style="height: 26px;">
+                                        <td class="aui-grid-row-num-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px 2px; width: 36px; display: block; max-height: 24px;">
+                                                3
+                                            </div>
+                                        </td>
+                                        <td class="aui-grid-row-state-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px; width: 16px; height: 1px;"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="aui-grid-alternative-row-background" style="height: 26px;">
+                                        <td class="aui-grid-row-num-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px 2px; width: 36px; display: block; max-height: 24px;">
+                                                4
+                                            </div>
+                                        </td>
+                                        <td class="aui-grid-row-state-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px; width: 16px; height: 1px;"></div>
+                                        </td>
+                                    </tr>
+                                    <tr class="aui-grid-row-background" style="height: 26px;">
+                                        <td class="aui-grid-row-num-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px 2px; width: 36px; display: block; max-height: 24px;">
+                                                5
+                                            </div>
+                                        </td>
+                                        <td class="aui-grid-row-state-column">
+                                            <div class="aui-grid-renderer-base"
+                                                 style="overflow: hidden; padding: 0px; width: 16px; height: 1px;"></div>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="aui-grid-footer-panel"
+                                 style="position: absolute; display: none; width: 56px; height: 0px; left: 0px; top: 424px;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
+<script src="/js/bootstrap.js"></script>
+
+</body>
+
+</html>
