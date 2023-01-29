@@ -2293,7 +2293,7 @@ if (typeof jQuery === 'undefined') {
     $('[data-spy="affix"]').each(function () {
       var $spy = $(this)
       var data = $spy.data()
-
+      alert("!!!");
       data.offset = data.offset || {}
 
       if (data.offsetBottom != null) data.offset.bottom = data.offsetBottom
