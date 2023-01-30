@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/common/layout/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <th:block layout:fragment="content">
+      <div id="contents">
+          <section>
+        <h3 class="text-left">
+            <span>
+                <i class="fa-solid fa-circle fa-xs"></i></span>예약조회
+          <span>
+              <div class="float-right">
+            <button type="button" class="btn btn-primary">조회</button>
+            <button type="button" class="btn btn-primary">초기화</button>
+              </div>
+          </span>
+        </h3>
+
+          <!--SEARCH -->
+              <form id="searchForm" name="searchForm">
+                  <fieldset>
+                      <div id="search_reservation">
+                          <table class="table table-bordered">
+                              <tbody>
+                              <tr>
+                                  <th class="table-active">
+                                      <span>
+                                          <label th:for="revDtime">예약일자</label>
+                                      </span>
+                                  </th>
+                                  <td>
+                                      <span>
+                                        <input type="text" id="revStartDtime" readonly>
+                                          <button type="button">
+                                              <i class="fa-regular fa-calendar-days"></i>
+                                          </button>
+                                      </span>
+                                      <em>~</em>
+                                      <span>
+                                        <input type="text" id="revEndDtime" readonly>
+                                          <button type="button">
+                                              <i class="fa-regular fa-calendar-days"></i>
+                                          </button>
+                                      </span>
+                                  </td>
+                                  <th class="table-active">
+                                    <span>
+                                        <label th:for="revNo">예약번호</label>
+                                    </span>
+                                  </th>
+                                  <td>
+                                      <span>
+                                           <input type="text" id="revNo" readonly>
+                                      </span>
+                                  </td>
+                                  <th class="table-active">
+                                      <span>
+                                          <label for="revStatus">예약상태</label>
+                                      </span>
+                                  </th>
+                                  <td>
+                                      <span>
+                                        <select id="revStatus">
+                                            <option value="10">예약접수</option>
+                                            <option value="20">예약완료</option>
+                                            <option value="30">취소처리중</option>
+                                            <option value="40">취소철회</option>
+                                            <option value="50">환불완료</option>
+                                        </select>
+                                      </span>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <th class="table-active">회원정보
+                                    <span>
+                                        <label th:for="memberInfo"></label>
+                                    </span>
+                                  </th>
+                                  <td>
+                                      <span>
+                                        <input type="text" id="memberNo" readonly>
+                                      </span>
+                                      <span>
+                                        <input type="text" id="loginId" readonly>
+                                          <button type="button">
+                                              <i class="fa-solid fa-magnifying-glass"></i>
+                                          </button>
+                                      </span>
+                                  </td>
+                                  <th class="table-active">
+                                      <span>
+                                          <label th:for="goodsCd">상품종류</label>
+                                      </span>
+                                  </th>
+                                  <td>
+                                      <span>
+                                          <select id="goodsCd">
+                                            <option value="01">항공권</option>
+                                            <option value="02">숙박</option>
+                                        </select>
+                                      </span>
+                                  </td>
+                              </tr>
+                              </tbody>
+                          </table>
+                      </div>
+                  </fieldset>
+              </form>
+          </section>
+
+          <!-- GRID -->
+          <section>
+              <div id="revInfoListGrid"></div>
+          </section>
+      </div>
+  </th:block>
+</body>
+</html>
+    <script th:src="@{/ts/reservation/reservationInfo.ts}"></script>

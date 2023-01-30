@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>숙소관리</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css"/>
+
+    <style>
+        table {
+            width: 100%;
+            border: 1px solid;
+        }
+        th, td {
+            border: 1px solid;
+        }
+    </style>
+</head>
+
+<body class="bg-gradient-primary">
+
+<div class="container">
+    <div class="content">
+
+        <form id="shopForm" name="shopForm" onsubmit="return false;">
+            <!-- FORM -->
+            <section class="cont-form">
+                <input type="hidden" id="mode" name="mode" value="INS">
+                <div class="stbl">
+                    <div class="hd">
+                        <h4>숙소 등록</h4>
+                    </div>
+                    <div class="tsch" id="op_toggle_2">
+                        <table>
+                            <colgroup>
+                                <col style="width:222px">
+                                <col style="width:auto">
+                                <col style="width:206px">
+                                <col style="width:auto">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th scope="row"><span><label for="lodgingNo">숙소번호</label></span></th>
+                                <td colspan="3">
+									<span class="ptxt cn">
+										<input type="hidden" id="lodgingNo" name="lodgingNo" value="">
+										<input type="text" value="" name="lodgingNo">
+									</span>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row"><span>숙소구분</span></th>
+                                <td>
+                                    <span class="chk">
+                                        <input type="radio" value="00" name="lodgingCd" id="lodgingCd2">
+                                        <label for="lodgingCd2">호텔</label>
+                                        </span>
+                                        <span class="chk">
+                                            <input type="radio" value="10" name="lodgingCd" id="lodgingCd3">
+                                            <label for="lodgingCd3">게스트하우스</label>
+                                        </span><span class="chk">
+                                            <input type="radio" value="30" name="lodgingCd" id="lodgingCd4">
+                                            <label for="lodgingCd4">펜션/풀빌라</label>
+                                        </span><span class="chk">
+                                            <input type="radio" value="40" name="lodgingCd" id="lodgingCd5">
+                                            <label for="lodgingCd5">캠핑/글램핑</label>
+                                        </span>
+                                </td>
+                                <th scope="row">
+                                    <span><label for="useYn">사용여부</label></span>
+                                </th>
+                                <td>
+                                    <span>
+                                        <input type="radio" value="Y" name="useYn">
+                                        <label for="dispYn7">Y</label>
+                                    </span>
+                                    <span>
+                                        <input type="radio" value="N" name="useYn">
+                                        <label for="dispYn8">N</label>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <span><label for="countryCd">나라</label></span>
+                                </th>
+                                <td>
+                                    <span>
+                                        <select id="countryCd" name="countryCd">
+                                            <option>전체</option>
+                                            <option>국내</option>
+                                            <option>일본</option>
+                                            <option>동남아시아</option>
+                                            <option>유럽</option>
+                                            <option>미국</option>
+                                        </select>
+                                    </span>
+                                </td>
+                                <th scope="row">
+                                    <span><label for="areaCd">지역</label></span>
+                                </th>
+                                <td>
+                                       <span>
+											<select id="areaCd" name="areaCd">
+												<option>전체</option>
+						                        <option>서울</option>
+                                                <option>제주</option>
+											</select>
+										</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><span><label for="lodgingNm">숙소명</label></span></th>
+                                <td colspan="3">
+									<span class="ptxt cn">
+										<input type="hidden" id="lodgingNm" name="lodgingNm" value="">
+										<input type="text" value="" name="lodgingNm">
+										<button class="cls" type="button"><em class="ir">삭제</em></button>
+									</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><span>숙소 기간</span></th>
+                                <td>
+									<span>
+                                        <span>
+                                            <input type="text" title="시작일 선택" size="5">
+                                            <button type="button"><em class="ir">달력에서 선택</em></button>
+                                        </span>
+                                        <em class="ts" id="ts">~</em>
+                                        <span class="ptxt-date">
+                                            <input type="text" title="종료일 선택" size="5">
+                                            <button type="button"><em class="ir">달력에서 선택</em></button>
+                                        </span>
+                                    </span>
+                                </td>
+                                <th scope="row">
+                                    <span><label for="lodgingRank">등급<label></span>
+                                </th>
+                                <td>
+                                    <span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank1">
+                                            <label for="lodgingRank1">1성급</label>
+                                        </span><span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank2">
+                                            <label for="lodgingRank2">2성급</label>
+                                        </span><span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank3">
+                                            <label for="lodgingRank3">3성급</label>
+                                        </span><span class="chk">
+                                            <input type="radio" name="lodgingRank" id="lodgingRank4">
+                                            <label for="lodgingRank4">4성급</label>
+                                        </span>
+                                    </span>
+                                    <span class="chk">
+                                        <input type="radio" name="lodgingRank" id="lodgingRank5">
+                                        <label for="lodgingRank5">5성급</label>
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+            <!-- //FORM -->
+            <section class="cont-form">
+                <div class="stbl">
+                    <div class="hd">
+                        <h4>객실 정보</h4>
+					</span>
+                    </div>
+                    <div >
+                        <table>
+                            <colgroup>
+                                <col style="width:222px">
+                                <col style="width:auto">
+                                <col style="width:206px">
+                                <col style="width:auto">
+                            </colgroup>
+                            <tbody>
+                            <tr>
+                                <th scope="row"><span><label for="roomNo">객실번호</label></span></th>
+                                <td colspan="3">
+									<span class="ptxt cn">
+										<input type="hidden" id="roomNo" name="roomNo" value="">
+										<input type="text" value="" name="lodgingNo">
+									</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><span><label for="roomNm">객실명</label></span></th>
+                                <td colspan="3">
+									<span class="ptxt cn">
+										<input type="hidden" id="roomNm" name="roomNm" value="">
+										<input type="text" value="" name="roomNm">
+										<button class="cls" type="button"><em class="ir">삭제</em></button>
+									</span>
+                                </td>
+                                <th scope="row"><span><label for="roomPrice">가격</label></span></th>
+                                <td colspan="3">
+									<span class="ptxt cn">
+										<input type="hidden" id="roomPrice" name="roomPrice" value="">
+										<input type="text" value="" name="roomPrice">
+										<button class="cls" type="button"><em class="ir">삭제</em></button>
+									</span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </form>
+        <!-- BUTTON BOOTM FIXED -->
+        <div class="btn-btm-fixed">
+
+            <div class="btn-rt">
+                <button type="button" class="btn pg" btn-id="saveBtn"><em>저장</em></button>
+            </div>
+        </div>
+        <!--// BUTTON BOOTM FIXED -->
+
+    </div>
+</div>
+
+<script src="/js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
