@@ -665,3 +665,6 @@ gradle-app.setting
 *.hprof
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,macos,intellij,intellij+all,intellij+iml,java,node,dbeaver,eclipse,jetbrains,gradle
+
+### Querydsl
+/src/main/generated
