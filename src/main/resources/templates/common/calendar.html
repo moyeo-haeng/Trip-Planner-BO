@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/common/layout/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css" />
+</head>
+<body>
+<th:block layout:fragment="content">
+
+<div class='col-md-2 col-xs-1' style="float:left;">
+    <div class="form-group">
+        <div class="input-group date" id="startDate" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#startDate" value="01/11/2020">
+            <div class="input-group-append" data-target="#startDate" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+    <span style="float:left;">~</span>
+<div class='col-md-2 col-xs-1' style="float:left;">
+    <div class="form-group">
+        <div class="input-group date" id="endDate" data-target-input="nearest">
+            <input type="text" class="form-control datetimepicker-input" data-target="#endDate" value="01/15/2020">
+            <div class="input-group-append" data-target="#endDate" data-toggle="datetimepicker">
+                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+            </div>
+        </div>
+    </div>
+</div>
+</th:block>
+</body>
+</html>
+<script th:src="@{/ts/reservation/reservationInfo.ts}"></script>

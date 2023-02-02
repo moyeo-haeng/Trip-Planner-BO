@@ -20,4 +20,14 @@ public class CommonController {
     public String head() {
         return "common/fragments/header";
     }
+
+    @GetMapping("/calendarTest")
+    public String calendarTest() {
+        return "common/calendar";
+    }
+
+    @GetMapping("/layerPopupTest")
+    public String layerPopupTest() {
+        return "common/layerPopup";
+    }
 }
