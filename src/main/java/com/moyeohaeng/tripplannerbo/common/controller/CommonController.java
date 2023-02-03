@@ -18,6 +18,7 @@ public class CommonController {
 
     @GetMapping("/head")
     public String head() {
+    	// 데이터 모델로 가져가자
         return "common/fragments/header";
     }
 }
