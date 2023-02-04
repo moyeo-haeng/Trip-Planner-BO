@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+<head>
+    <title>Code Select box</title>
+    <meta charset="utf-8">
+</head>
+
+<body>
+    <th:block th:fragment="combo(params)">
+
+        <input type="text" th:value="${#lists.size(params)}">
+
+        <input type="text" th:value="${params.commonCodes}">
+
+        <li th:each="conts : ${params.commonCodes}">
+            <span th:text="|${conts.commonCdId} + '===>' + ${conts.commonCdNm}|"></span>
+        </li>
+    </th:block>
+
+</body>
+
+</html>

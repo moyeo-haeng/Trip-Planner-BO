@@ -12,12 +12,15 @@ import java.time.LocalDateTime;
 @Builder
 public class CommonCodeReq {
     @Id
-    private String commonNo;
+    private int commonNo;
     private String commonType;
     private String commonCdId;
     private String commonCdNm;
+    private String commonCdDesc;
     private String commonGroupCdId;
     private String commonGroupCdNm;
+    private String commonGroupCdDesc;
+    private int commonSortSeq;
     private String commonCdEditYn;
     private String useYn;
     private String regId;
@@ -31,8 +34,11 @@ public class CommonCodeReq {
                 .commonType(commonType)
                 .commonCdId(commonCdId)
                 .commonCdNm(commonCdNm)
+                .commonCdDesc(commonCdDesc)
                 .commonGroupCdId(commonGroupCdId)
                 .commonGroupCdNm(commonGroupCdNm)
+                .commonGroupCdDesc(commonGroupCdDesc)
+                .commonSortSeq(commonSortSeq)
                 .commonCdEditYn(commonCdEditYn)
                 .useYn(useYn)
                 .regId(regId)

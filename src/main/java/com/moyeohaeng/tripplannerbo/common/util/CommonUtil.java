@@ -4,15 +4,27 @@ import com.moyeohaeng.tripplannerbo.common.domain.CommonCode;
 import com.moyeohaeng.tripplannerbo.common.domain.request.CommonCodeReq;
 import com.moyeohaeng.tripplannerbo.common.domain.response.CommonCodeRes;
 import com.moyeohaeng.tripplannerbo.common.utility.CommonUtility;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CommonUtil extends CommonUtility {
+
+
+    public static class CodeUtilException extends RuntimeException {
+        private static final long serialVersionUID = 1L;
+
+        public CodeUtilException(Throwable cause) {
+            super(cause);
+        }
+
+    }
 
     /**
      * 공통코드 생성
      */
-    public CommonCodeRes createElement(CommonCodeReq parameter) {
+    public CommonCodeRes createElement(/*CommonCodeReq parameter*/) {
         return CommonCodeRes.builder()
-                .commonCodes(searchCommonCode(parameter.toCommonCode()))
+                .commonCodes(searchCommonCode(/*parameter.toCommonCode()*/))
                 .build();
     }
 }

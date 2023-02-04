@@ -2,8 +2,7 @@ package com.moyeohaeng.tripplannerbo.common.domain;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -16,12 +15,16 @@ import java.util.List;
 @Builder
 public class CommonCode {
     @Id
-    private String commonNo;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int commonNo;
     private String commonType;
     private String commonCdId;
     private String commonCdNm;
+    private String commonCdDesc;
     private String commonGroupCdId;
     private String commonGroupCdNm;
+    private String commonGroupCdDesc;
+    private int commonSortSeq;
     private String commonCdEditYn;
     private String useYn;
     private String regId;

@@ -8,7 +8,10 @@
 
 <body>
     <div class="container">
-        <h3>Hi</h3>
+        <th:block > <!--th:with="code =${commonCodeReq.builder().build()}"-->
+            <span th:replace="common/fragments/CodeCombo :: combo(${@commonUtil.createElement()})"></span>
+        </th:block>
+
     </div>
 
 </body>

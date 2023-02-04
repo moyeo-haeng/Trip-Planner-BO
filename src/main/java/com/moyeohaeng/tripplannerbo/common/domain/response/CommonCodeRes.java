@@ -14,18 +14,21 @@ import java.util.List;
 @Builder
 public class CommonCodeRes {
     @Id
-    private String commonNo;
+    private int commonNo;
     private String commonType;
     private String commonCdId;
     private String commonCdNm;
+    private String commonCdDesc;
     private String commonGroupCdId;
     private String commonGroupCdNm;
+    private String commonGroupCdDesc;
+    private int commonSortSeq;
     private String commonCdEditYn;
     private String useYn;
     private String regId;
     private LocalDateTime regDtime;
     private String uptId;
     private LocalDateTime uptDtime;
-    @Setter List<CommonCodeRes> commonCodes; // 결과 코드 값
+    List<CommonCodeRes> commonCodes; // 결과 코드 값
 
 }
