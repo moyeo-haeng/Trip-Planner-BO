@@ -15,7 +15,7 @@ public class CommonUtil extends CommonUtility {
 
         return CommonCodeRes.builder()
                 .id(parameter.getId())
-                .defaultOption(parameter.getDefaultOption())
+                .defaultOption(parameter.isDefaultOption())
                 .commonCodes(searchCommonCode(parameter.toCommonCode()))
                 .build();
     }

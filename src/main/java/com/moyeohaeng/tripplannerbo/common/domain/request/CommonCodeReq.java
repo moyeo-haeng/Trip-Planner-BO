@@ -30,7 +30,7 @@ public class CommonCodeReq {
     private LocalDateTime uptDtime;
 
     private String id;  // 사용자 설정 id 요소 값
-    private String defaultOption;  // '전체' on/off
+    @Builder.Default private boolean defaultOption = true; // '전체' on/off
 
     public CommonCode toCommonCode() {
 

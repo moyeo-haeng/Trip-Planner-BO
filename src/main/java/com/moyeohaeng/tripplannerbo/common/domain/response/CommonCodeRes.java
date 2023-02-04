@@ -14,8 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 public class CommonCodeRes {
 
-    private String id;
-    private String defaultOption;
+    private String id;  // 사용자 설정 id 요소 값
+    @Builder.Default private boolean defaultOption = true; // '전체' on/off
     private CommonCode commonCode;
     List<CommonCodeRes> commonCodes; // 결과 코드 값
 
