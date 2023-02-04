@@ -23,7 +23,7 @@ let main = {
         let result = "";
         $.ajax({
             type: 'POST',
-            url: '/api/v1/commonCd',
+            url: '/api/v1/commCd',
             async: false,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
@@ -39,7 +39,7 @@ let main = {
 
         $.ajax({
             type: 'GET',
-            url: '/api/v1/commonCd/' + result,
+            url: '/api/v1/commCd/' + result,
             async: false,
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
