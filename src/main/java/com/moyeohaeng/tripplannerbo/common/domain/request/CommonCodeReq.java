@@ -31,6 +31,8 @@ public class CommonCodeReq {
 
     private String id;  // 사용자 설정 id 요소 값
     @Builder.Default private boolean defaultOption = true; // '전체' on/off
+    @Builder.Default private boolean checked = false; // 체크 여부
+    @Builder.Default private boolean disabled = false; // 수정 불가 여부
 
     public CommonCode toCommonCode() {
 

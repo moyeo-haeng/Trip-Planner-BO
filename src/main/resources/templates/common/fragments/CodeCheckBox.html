@@ -9,23 +9,24 @@
     <th:block th:fragment="combo(params)"> <!-- th:with="valName = ${params.isNameOfEmpty()} ? ${params.id} : ${params.name}" -->
         <!--/* 기본값 */-->
 
-        <input type="text" th:value="${params.isDefaultOption()}">
-
         <span th:if="${params.isDefaultOption() and #lists.size(params.commonCodes) > 1}">
             <input type="checkbox"
                    th:id="|${params.id}00|"
                    th:name="${params.commonCodes[0].commonCode.commonGroupCdId}"
+                   th:disabled="${params.isDisabled()}"
+                   th:checked="${params.checked}"
                    value="">
             <label  th:for="|${params.id}00|" th:text="전체"></label>
         </span>
 <!--          th:checked="${params.checked} ? true : ${params.isEqualsValusAll(params.commonCodes)}"-->
-        <!-- th:disabled="${params.isDisabled()}"-->
 
         <span th:each="conts : ${params.commonCodes}" th:with="commonCode = ${conts.commonCode}">
          <!--/* DATA LIST */-->
             <input type="checkbox"
                    th:id="|${params.id}${commonCode.commonNo}|"
                    th:name="${commonCode.commonGroupCdId}"
+                   th:disabled="${params.isDisabled()}"
+                   th:checked="${params.checked}"
                    th:value="${commonCode.commonCdId}">
             <label th:for="|${params.id}${commonCode.commonNo}|" th:text="${commonCode.commonCdNm}"></label>
         </span>

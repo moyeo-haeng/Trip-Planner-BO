@@ -15,7 +15,9 @@ import java.util.List;
 public class CommonCodeRes {
 
     private String id;  // 사용자 설정 id 요소 값
-    @Builder.Default private boolean defaultOption = true; // '전체' on/off
+    private boolean defaultOption; // '전체' on/off
+    private boolean checked; // 체크 여부
+    private boolean disabled; // 수정 불가 여부
     private CommonCode commonCode;
     List<CommonCodeRes> commonCodes; // 결과 코드 값
 
