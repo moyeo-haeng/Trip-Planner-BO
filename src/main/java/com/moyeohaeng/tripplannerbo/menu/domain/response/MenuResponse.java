@@ -1,19 +1,19 @@
 package com.moyeohaeng.tripplannerbo.menu.domain.response;
 
 import com.moyeohaeng.tripplannerbo.menu.domain.Menus;
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class MenuResponse {
 
-    @Id
     private String menuNo;
     private String menuName;
     private String menuUrl;
@@ -25,6 +25,7 @@ public class MenuResponse {
     private LocalDateTime regDtime;
     private String uptId;
     private LocalDateTime uptDtime;
+    private List<MenuResponse> children;
 
     public MenuResponse (final Menus menus) {
         this.menuNo = menus.getMenuNo();
@@ -38,5 +39,6 @@ public class MenuResponse {
         this.regDtime = menus.getRegDtime();
         this.uptId = menus.getUptId();
         this.uptDtime = menus.getUptDtime();
+        this.children = menus.getChildren().stream().map(MenuResponse::new).collect(Collectors.toList());
     }
 }

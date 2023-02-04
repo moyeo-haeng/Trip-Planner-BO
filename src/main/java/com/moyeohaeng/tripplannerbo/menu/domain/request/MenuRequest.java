@@ -1,19 +1,14 @@
 package com.moyeohaeng.tripplannerbo.menu.domain.request;
 
-import com.moyeohaeng.tripplannerbo.common.domain.request.CommonCodeReq;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
-import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Getter
-@Setter
 @Builder
 public class MenuRequest {
 
-    @Id
     private String menuNo;
     private String menuName;
     private String menuUrl;
