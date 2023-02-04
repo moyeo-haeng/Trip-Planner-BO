@@ -16,8 +16,8 @@ public class CommonController {
         return "common/main";
     }
 
-    @GetMapping("/head")
-    public String head() {
-        return "common/fragments/header";
+    @GetMapping("/comm-cd-mgmt")
+    public String commCdMgmt() {
+        return "common/commCdMgmt";
     }
 }

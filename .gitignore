@@ -668,3 +668,6 @@ gradle-app.setting
 
 ### Querydsl
 /src/main/generated
+
+# db setting
+application-db.yml
