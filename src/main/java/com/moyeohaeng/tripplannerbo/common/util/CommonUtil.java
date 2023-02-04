@@ -13,6 +13,9 @@ public class CommonUtil extends CommonUtility {
      */
     public CommonCodeRes createElement(CommonCodeReq parameter) {
 
+        // Req, Res 지금 방식대로 하는게 맞을까...?
+        // 테스트는 sample 페이지에서 하고있어!
+
         return CommonCodeRes.builder()
                 .id(parameter.getId())
                 .defaultOption(parameter.isDefaultOption())
