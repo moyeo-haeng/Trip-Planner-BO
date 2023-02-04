@@ -13,8 +13,6 @@ public class CommonUtil extends CommonUtility {
      */
     public CommonCodeRes createElement(CommonCodeReq parameter) {
 
-        System.out.println("parameter==>" + parameter.getId());
-
         return CommonCodeRes.builder()
                 .id(parameter.getId())
                 .defaultOption(parameter.getDefaultOption())
