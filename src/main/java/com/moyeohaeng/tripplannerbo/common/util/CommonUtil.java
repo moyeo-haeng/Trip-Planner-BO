@@ -11,12 +11,14 @@ public class CommonUtil extends CommonUtility {
     /**
      * 공통코드 생성
      */
-    public CommonCodeRes createElement(/*CommonCodeReq parameter*/) {
+    public CommonCodeRes createElement(CommonCodeReq parameter) {
 
-//        System.out.println(parameter);
+        System.out.println("parameter==>" + parameter.getId());
 
         return CommonCodeRes.builder()
-                .commonCodes(searchCommonCode(/*parameter.toCommonCode()*/))
+                .id(parameter.getId())
+                .defaultOption(parameter.getDefaultOption())
+                .commonCodes(searchCommonCode(parameter.toCommonCode()))
                 .build();
     }
 }

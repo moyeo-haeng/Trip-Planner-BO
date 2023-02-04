@@ -13,6 +13,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommonCodeRes {
+
+    private String id;
+    private String defaultOption;
     private CommonCode commonCode;
     List<CommonCodeRes> commonCodes; // 결과 코드 값
 

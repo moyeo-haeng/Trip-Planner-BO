@@ -18,7 +18,7 @@ public class CommonUtility {
     private CommonCodeRepository commonCodeRepository;
 
 
-    public final List<CommonCodeRes> searchCommonCode() { /*CommonCodeReq parameter*/
+    public final List<CommonCodeRes> searchCommonCode(CommonCode parameter) {
 
         commonCodeRepository.save(
                 CommonCode.builder().commonType("ST").commonCdId("10").commonCdNm("구성중").commonCdDesc("구성중").commonGroupCdId("ST0001")
@@ -38,6 +38,6 @@ public class CommonUtility {
                         .build()
         );
 
-        return commonRepository.searchCommonCode(/*parameter*/);
+        return commonRepository.searchCommonCode(parameter);
     }
 }

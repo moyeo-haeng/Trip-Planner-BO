@@ -1,5 +1,6 @@
 package com.moyeohaeng.tripplannerbo.common.repository;
 
+import com.moyeohaeng.tripplannerbo.common.domain.CommonCode;
 import com.moyeohaeng.tripplannerbo.common.domain.request.CommonCodeReq;
 import com.moyeohaeng.tripplannerbo.common.domain.response.CommonCodeRes;
 import com.querydsl.core.types.Projections;
@@ -17,11 +18,12 @@ public class CommonRepository {
 
     private final JPAQueryFactory queryFactory;
 
-    public List<CommonCodeRes> searchCommonCode(){ /*CommonCodeReq parameter*/
+    public List<CommonCodeRes> searchCommonCode(CommonCode parameter){
 
         List<CommonCodeRes> result = queryFactory
                 .select(Projections.fields(CommonCodeRes.class, commonCode))
                 .from(commonCode)
+                .where(commonCode.commonGroupCdId.eq(parameter.getCommonGroupCdId()))
                 .fetch();
 
         return result;

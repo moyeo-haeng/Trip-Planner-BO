@@ -8,8 +8,8 @@
 
 <body>
     <div class="container">
-        <th:block> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
-            <span th:replace="common/fragments/CodeCombo :: combo(${@commonUtil.createElement()})"></span>
+        <th:block th:with="code =${CommonCodeReq.builder().id('statCd').commonGroupCdId('ST0001').build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
+            <span th:replace="common/fragments/CodeCombo :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
 
     </div>

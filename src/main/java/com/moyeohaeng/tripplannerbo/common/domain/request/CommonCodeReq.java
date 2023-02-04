@@ -1,5 +1,6 @@
 package com.moyeohaeng.tripplannerbo.common.domain.request;
 
+import com.moyeohaeng.tripplannerbo.common.domain.CommonCode;
 import lombok.*;
 
 import javax.persistence.Id;
@@ -28,8 +29,12 @@ public class CommonCodeReq {
     private String uptId;
     private LocalDateTime uptDtime;
 
-    public CommonCodeReq toCommonCode() {
-        return CommonCodeReq.builder()
+    private String id;  // 사용자 설정 id 요소 값
+    private String defaultOption;  // '전체' on/off
+
+    public CommonCode toCommonCode() {
+
+        return CommonCode.builder()
                 .commonNo(commonNo)
                 .commonType(commonType)
                 .commonCdId(commonCdId)
@@ -47,7 +52,5 @@ public class CommonCodeReq {
                 .uptDtime(uptDtime)
                 .build();
     }
-
-    private String id;
 
 }
