@@ -1,6 +1,5 @@
 package com.moyeohaeng.tripplannerbo.config;
 
-import com.moyeohaeng.tripplannerbo.P6spyPrettySqlFormatter;
 import com.p6spy.engine.spy.P6SpyOptions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.context.annotation.Bean;

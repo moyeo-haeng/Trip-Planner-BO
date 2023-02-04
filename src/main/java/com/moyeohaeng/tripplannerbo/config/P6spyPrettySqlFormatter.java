@@ -1,4 +1,4 @@
-package com.moyeohaeng.tripplannerbo;
+package com.moyeohaeng.tripplannerbo.config;
 
 import com.p6spy.engine.logging.Category;
 import com.p6spy.engine.spy.appender.MessageFormattingStrategy;

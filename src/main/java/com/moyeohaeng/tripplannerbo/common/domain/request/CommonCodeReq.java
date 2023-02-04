@@ -1,8 +1,6 @@
 package com.moyeohaeng.tripplannerbo.common.domain.request;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Id;
 import java.time.LocalDateTime;
@@ -10,6 +8,8 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommonCodeReq {
     @Id
     private int commonNo;
@@ -47,5 +47,7 @@ public class CommonCodeReq {
                 .uptDtime(uptDtime)
                 .build();
     }
+
+    private String id;
 
 }

@@ -24,8 +24,6 @@ public class CommonRepository {
                 .from(commonCode)
                 .fetch();
 
-        System.out.println("아 제발 ==>" + result);
-
         return result;
     }
 }
