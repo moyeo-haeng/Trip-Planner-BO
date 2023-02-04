@@ -32,7 +32,6 @@ public class MenuResponse {
         this.menuName = menus.getMenuName();
         this.menuUrl = menus.getMenuUrl();
         this.menuSeq = menus.getMenuSeq();
-        this.menuParentNo = menus.getMenuParentNo();
         this.siteDiviCd = menus.getSiteDiviCd();
         this.useYn = menus.getUseYn();
         this.regId = menus.getRegId();

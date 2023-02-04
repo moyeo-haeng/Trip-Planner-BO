@@ -18,7 +18,7 @@ import java.util.stream.Collectors;
 @Table(name="menu")
 public class Menus {
 
-    @Id
+    @Id @GeneratedValue
     @Column(name = "menu_no")
     private String menuNo;
     @Column(name = "menu_name")
@@ -27,8 +27,6 @@ public class Menus {
     private String menuUrl;
     @Column(name = "menu_seq")
     private int menuSeq;
-    @Column(name = "menu_parent_no")
-    private String menuParentNo;
     @Column(name = "site_divi_cd")
     private String siteDiviCd;
     @Column(name = "use_yn")
@@ -52,7 +50,6 @@ public class Menus {
         this.menuName = menuRequest.getMenuName();
         this.menuUrl = menuRequest.getMenuUrl();
         this.menuSeq = menuRequest.getMenuSeq();
-        this.menuParentNo = menuRequest.getMenuParentNo();
         this.siteDiviCd = menuRequest.getSiteDiviCd();
         this.useYn = menuRequest.getUseYn();
         this.regId = menuRequest.getRegId();
