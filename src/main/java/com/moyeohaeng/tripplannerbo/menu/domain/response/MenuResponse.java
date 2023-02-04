@@ -1,6 +1,6 @@
 package com.moyeohaeng.tripplannerbo.menu.domain.response;
 
-import com.moyeohaeng.tripplannerbo.menu.domain.Menus;
+import com.moyeohaeng.tripplannerbo.menu.domain.Menu;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class MenuResponse {
 
-    private String menuNo;
+    private Long menuNo;
     private String menuName;
     private String menuUrl;
     private int menuSeq;
@@ -27,17 +27,17 @@ public class MenuResponse {
     private LocalDateTime uptDtime;
     private List<MenuResponse> children;
 
-    public MenuResponse (final Menus menus) {
-        this.menuNo = menus.getMenuNo();
-        this.menuName = menus.getMenuName();
-        this.menuUrl = menus.getMenuUrl();
-        this.menuSeq = menus.getMenuSeq();
-        this.siteDiviCd = menus.getSiteDiviCd();
-        this.useYn = menus.getUseYn();
-        this.regId = menus.getRegId();
-        this.regDtime = menus.getRegDtime();
-        this.uptId = menus.getUptId();
-        this.uptDtime = menus.getUptDtime();
-        this.children = menus.getChildren().stream().map(MenuResponse::new).collect(Collectors.toList());
+    public MenuResponse (final Menu menu) {
+        this.menuNo = menu.getMenuNo();
+        this.menuName = menu.getMenuName();
+        this.menuUrl = menu.getMenuUrl();
+        this.menuSeq = menu.getMenuSeq();
+        this.siteDiviCd = menu.getSiteDiviCd();
+        this.useYn = menu.getUseYn();
+        this.regId = menu.getRegId();
+        this.regDtime = menu.getRegDtime();
+        this.uptId = menu.getUptId();
+        this.uptDtime = menu.getUptDtime();
+        this.children = menu.getChildren().stream().map(MenuResponse::new).collect(Collectors.toList());
     }
 }

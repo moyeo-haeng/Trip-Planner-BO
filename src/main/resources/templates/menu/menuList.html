@@ -1,23 +1,65 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="/common/layout/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/common/layout/layout">
 <head>
-<meta charset="UTF-8">
-<title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-	<th:block layout:fragment="content">
-		<div>
-			<a href="/menu/menuForm">저장페이지</a>
-		</div>
-		<div id="contents">
-			<!-- GRID -->
-			<section>
-				<div id="menuListGrid"></div>
-			</section>
-		</div>
-	</th:block>
+<th:block layout:fragment="content">
+    <div id="contents">
+        <section>
+            <h3 class="text-left">
+            <span>
+                <i class="fa-solid fa-circle fa-xs"></i></span>메뉴조회
+                <span>
+              <div class="float-right">
+            <button type="button" class="btn btn-primary">조회</button>
+            <button type="button" class="btn btn-primary">초기화</button>
+              </div>
+          </span>
+            </h3>
+
+            <!--SEARCH -->
+            <form id="searchForm" name="searchForm">
+                <fieldset>
+                    <div id="search_reservation">
+                        <table class="table table-bordered">
+                            <tbody>
+                            <tr>
+                                <th class="table-active">
+                                    <span>
+                                        <label th:for="revNo">메뉴명</label>
+                                    </span>
+                                </th>
+                                <td>
+                                    <span>
+                                        <input type="text" id="revNo" readonly>
+                                    </span>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+        <!-- GRID -->
+        <section>
+            <div id="menuListGrid"></div>
+        </section>
+    </div>
+</th:block>
 </body>
 </html>
 <script th:src="@{/ts/menu/menuList.ts}"></script>
+<script th:inline="javascript">
+    window.onload = () => {
+
+        const createdGrid = initGrid();
+        const sampleData = [[${menuInfoList}]];
+        createdGrid.resetData(sampleData);
+
+    }
+</script>

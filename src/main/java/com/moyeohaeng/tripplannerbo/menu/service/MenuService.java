@@ -1,6 +1,6 @@
 package com.moyeohaeng.tripplannerbo.menu.service;
 
-import com.moyeohaeng.tripplannerbo.menu.domain.Menus;
+import com.moyeohaeng.tripplannerbo.menu.domain.Menu;
 import com.moyeohaeng.tripplannerbo.menu.domain.request.MenuRequest;
 import com.moyeohaeng.tripplannerbo.menu.domain.response.MenuResponse;
 import com.moyeohaeng.tripplannerbo.menu.repository.MenuCustomRepository;
@@ -20,14 +20,12 @@ public class MenuService {
     private final MenuCustomRepository menuCustomRepository;
 	
 	public List<MenuResponse> menuInfoList() {
-//        List<Menus> menus = menuCustomRepository.menuInfoList("0");
-//        return menus.stream().map(MenuResponse::new).collect(Collectors.toList());
-        return null;
+        List<Menu> menuInfoList = menuCustomRepository.menuInfoList();
+        return menuInfoList.stream().map(MenuResponse::new).collect(Collectors.toList());
     }
 
     public void menuForm(MenuRequest menuRequest) {
-        Menus menus = new Menus(menuRequest);
-        System.out.println(menus);
-//        menuRepository.save(menus);
+        Menu menu = new Menu(menuRequest);
+        menuRepository.save(menu);
     }
 }

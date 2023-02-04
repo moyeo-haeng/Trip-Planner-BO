@@ -1,7 +1,11 @@
 package com.moyeohaeng.tripplannerbo.menu.repository;
 
-import com.moyeohaeng.tripplannerbo.menu.domain.Menus;
+import com.moyeohaeng.tripplannerbo.menu.domain.Menu;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface MenuRepository extends JpaRepository<Menus, Long> {
+import javax.transaction.Transactional;
+
+@Transactional
+public interface MenuRepository extends JpaRepository<Menu, String> {
 }

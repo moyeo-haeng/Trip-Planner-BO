@@ -1,10 +1,13 @@
 package com.moyeohaeng.tripplannerbo.menu.repository;
 
-import com.moyeohaeng.tripplannerbo.menu.domain.Menus;
+import com.moyeohaeng.tripplannerbo.menu.domain.Menu;
+import org.springframework.stereotype.Repository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
+@Transactional
 public interface MenuCustomRepository {
 
-    public List<Menus> menuInfoList(String menuParentNo);
+    List<Menu> menuInfoList();
 }

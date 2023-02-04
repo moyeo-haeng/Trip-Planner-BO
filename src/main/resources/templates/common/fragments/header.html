@@ -1,17 +1,15 @@
-<header class="header" id="header" th:fragment="headerFragment">
+<header class="header" id="header" th:fragment="headerFragment(menuInfoList)">
 
 <!--메뉴바 추가 부분-->
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
-  <a class="navbar-brand" href="#">Moyeo Haeng</a>
+  <a class="navbar-brand" href="/main">Moyeo Haeng</a>
 
   <div class="collapse navbar-collapse" id="navbarsExample03">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navBar01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회원관리</a>
+      <li class="nav-item dropdown" th:each="menuInfo : ${menuInfoList}">
+        <a class="nav-link dropdown-toggle" href="#" id="navBar01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${menuInfo.menuName}"></a>
         <div class="dropdown-menu" aria-labelledby="navBar01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" th:each="childrenInfo : ${menuInfo.children}" th:href="@{${childrenInfo.menuUrl}}" th:text="${childrenInfo.menuName}"></a>
         </div>
       </li>
     </ul>

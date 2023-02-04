@@ -6,7 +6,7 @@
 <th:block th:replace="common/fragments/config :: configFragment"></th:block>
 <!-- header -->
 <body>
-<th:block th:replace="common/fragments/header :: headerFragment"></th:block>
+<th:block th:replace="common/fragments/header :: headerFragment(${@menuController.menuInfoList()})"></th:block>
   <div>
     <!-- content -->
     <th:block layout:fragment="content"> </th:block>
