@@ -11,8 +11,6 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
-@Builder
 public class CommonCode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

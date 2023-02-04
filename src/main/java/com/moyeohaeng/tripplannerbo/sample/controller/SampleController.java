@@ -17,7 +17,7 @@ public class SampleController {
     @GetMapping("sample")
     public String Sample(){
 
-        List<SampleModel> sampleModelList = sampleService.sample();
+//        List<SampleModel> sampleModelList = sampleService.sample();
 
         return "/sample/sample";
     }

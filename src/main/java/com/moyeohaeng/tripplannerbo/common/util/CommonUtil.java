@@ -8,17 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class CommonUtil extends CommonUtility {
-
-
-    public static class CodeUtilException extends RuntimeException {
-        private static final long serialVersionUID = 1L;
-
-        public CodeUtilException(Throwable cause) {
-            super(cause);
-        }
-
-    }
-
     /**
      * 공통코드 생성
      */

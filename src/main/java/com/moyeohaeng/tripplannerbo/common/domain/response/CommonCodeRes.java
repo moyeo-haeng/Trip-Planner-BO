@@ -29,6 +29,7 @@ public class CommonCodeRes {
     private LocalDateTime regDtime;
     private String uptId;
     private LocalDateTime uptDtime;
+    private CommonCode commonCode;
     List<CommonCodeRes> commonCodes; // 결과 코드 값
 
 }

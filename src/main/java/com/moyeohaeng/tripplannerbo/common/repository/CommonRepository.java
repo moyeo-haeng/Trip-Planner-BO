@@ -17,14 +17,14 @@ public class CommonRepository {
 
     private final JPAQueryFactory queryFactory;
 
-    public List<CommonCodeRes> searchCommonCode(/*CommonCodeReq parameter*/){
+    public List<CommonCodeRes> searchCommonCode(){ /*CommonCodeReq parameter*/
 
         List<CommonCodeRes> result = queryFactory
-                .select(Projections.fields(CommonCodeRes.class, commonCode.commonCdNm, commonCode.commonCdId))
+                .select(Projections.fields(CommonCodeRes.class, commonCode))
                 .from(commonCode)
                 .fetch();
 
-
+        System.out.println("아 제발 ==>" + result);
 
         return result;
     }

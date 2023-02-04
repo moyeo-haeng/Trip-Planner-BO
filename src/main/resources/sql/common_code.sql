@@ -30,9 +30,3 @@ insert into COMMON_CODE
 (COMMON_TYPE, COMMON_CD_ID, COMMON_CD_NM, COMMON_CD_DESC, COMMON_GROUP_CD_ID, COMMON_GROUP_CD_NM, COMMON_GROUP_CD_DESC, COMMON_SORT_SEQ, COMMON_CD_EDIT_YN, USE_YN, REG_ID, REG_DTIME)
 values
     ('ST', '30', '전시중단', '전시중단', 'STO0O1', '전시상태코드', '전시상태관리', '3' , 'Y', 'Y', 'ldw0503', sysdate());
-
-select * from common_code;
-
-SELECT t.*
-FROM moyeo_db.common_code t
-LIMIT 501
