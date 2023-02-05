@@ -1,5 +1,6 @@
 package com.moyeohaeng.tripplannerbo.common.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,40 +28,26 @@ public class CommonCode {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int commonNo;
     private long commonNo;
-
     @NotNull
     private String commonType;
 
     @NotNull
     @Column(unique = true)
     private String commonCdId;
-
     @NotNull
     private String commonCdNm;
     private String commonCdDesc;
-
-    @NotNull
-    private String commonCdDesc;
-
     @NotNull
     private String commonGroupCdId;
 
     @NotNull
     private String commonGroupCdNm;
     private String commonGroupCdDesc;
-    private int commonSortSeq;
-
-    @NotNull
-    private String commonGroupCdDesc;
-
-    private int commonSortSeq;
 
     private String commonCdEditYn;
-
+    private int commonSortSeq;
     private String useYn;
-
     private String regId;
 
     private LocalDateTime regDtime;
