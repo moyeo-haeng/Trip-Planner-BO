@@ -1,8 +1,11 @@
-import Grid from 'tui-grid';
-
-const initGrid = () => {
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var tui_grid_1 = __importDefault(require("tui-grid"));
+var initGrid = function () {
     // 그리드 객체
-
     /**
      * Grid 테마 커스텀
      * Grid.applyTheme('striped', {...}) :
@@ -12,7 +15,7 @@ const initGrid = () => {
      *      - preset theme name. Available values are 'default', 'striped' and 'clean'.
      *      - https://nhn.github.io/tui.grid/latest/Grid#applyTheme
      */
-    Grid.applyTheme('clean',  {
+    tui_grid_1.default.applyTheme('clean', {
         cell: {
             normal: {
                 border: 'black'
@@ -26,7 +29,6 @@ const initGrid = () => {
             }
         }
     });
-
     // @ts-ignore
     // @ts-ignore
     /**
@@ -48,9 +50,8 @@ const initGrid = () => {
      *      - @variable {Function} formatter : 출력 포멧
      * 기타 옵션은 공식 document를 참조하자.
      */
-
-    const revInfoListGrid = new Grid({
-        el: document.getElementById('revInfoListGrid')!,
+    var revInfoListGrid = new tui_grid_1.default({
+        el: document.getElementById('revInfoListGrid'),
         scrollX: true,
         scrollY: true,
         draggable: false,
@@ -64,18 +65,18 @@ const initGrid = () => {
                 align: "center",
                 width: 150,
                 whiteSpace: 'normal',
-                formatter: function (e:any) {
-                    return e.value
+                formatter: function (e) {
+                    return e.value;
                 },
             },
             {
                 header: '상품종류',
-                name: 'goods_cd',
+                name: 'goos_cd',
                 align: "left",
                 width: 100,
                 whiteSpace: 'normal',
-                formatter: function (e:any) {
-                    return e.value
+                formatter: function (e) {
+                    return e.value;
                 },
             },
             {
@@ -84,18 +85,18 @@ const initGrid = () => {
                 align: "left",
                 width: 150,
                 whiteSpace: 'normal',
-                formatter: function (e:any) {
-                    return e.value
+                formatter: function (e) {
+                    return e.value;
                 },
             },
             {
                 header: '회원아이디',
-                name: 'login_id',
+                name: 'loing_id',
                 align: "left",
                 width: 150,
                 whiteSpace: 'normal',
-                formatter: function (e:any) {
-                    return e.value
+                formatter: function (e) {
+                    return e.value;
                 },
             },
             {
@@ -104,45 +105,41 @@ const initGrid = () => {
                 align: "left",
                 width: 150,
                 whiteSpace: 'normal',
-                formatter: function (e:any) {
-                    return e.value
+                formatter: function (e) {
+                    return e.value;
                 },
             },
         ]
     });
-
     return revInfoListGrid;
-}
-
-window.onload = () => {
+};
+window.onload = function () {
     // 그리드 설정
-    const createdGrid = initGrid();
-
+    var createdGrid = initGrid();
     // 샘플 데이터
-    const sampleData = [
+    var sampleData = [
         {
             rev_no: 'R202301010001',
-            goods_cd: '숙박',
+            goos_cd: '숙박',
             member_no: 'M202301010001',
-            login_id: 'olj124',
+            loing_id: 'olj124',
             rev_status: '예약접수',
         },
         {
             rev_no: 'R202301010002',
-            goods_cd: '항공권',
+            goos_cd: '항공권',
             member_no: 'M202301010002',
-            login_id: 'pojk124',
+            loing_id: 'pojk124',
             rev_status: '예약완료',
         },
         {
             rev_no: 'R202301010003',
-            goods_cd: '항공권',
+            goos_cd: '항공권',
             member_no: 'M202301010003',
-            login_id: 'poj124',
+            loing_id: 'poj124',
             rev_status: '환뷸완료',
         },
     ];
-
     // 그리드에 데이터 넣기(출력)
     createdGrid.resetData(sampleData);
-}
+};
