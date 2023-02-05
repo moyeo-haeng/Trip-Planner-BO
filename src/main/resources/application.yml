@@ -6,13 +6,6 @@ spring:
   profiles:
     include: db
 
-#  jpa:
-#    database: mysql
-#    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
-#    hibernate:
-#      ddl-auto: none
-
-
 # after update html, not restart server
 
   devtools:
@@ -36,5 +29,4 @@ decorator:
   datasource:
     p6spy:
       enable-logging: true
-
-
+        format_sql: true

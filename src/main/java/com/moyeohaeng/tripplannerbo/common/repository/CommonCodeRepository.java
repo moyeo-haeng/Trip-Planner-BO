@@ -8,4 +8,10 @@ import java.util.List;
 public interface CommonCodeRepository extends JpaRepository<CommonCode, Long> {
 
 //    List<CommonCode> findALL();
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CommonCodeRepository extends JpaRepository<CommonCode, Long> {
+
+    CommonCode findCommonCodeByCommonCdId(String commonCdId);
 }
