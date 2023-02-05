@@ -1,13 +1,11 @@
 package com.moyeohaeng.tripplannerbo.common.domain;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,8 +16,6 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
-@AllArgsConstructor
-@Builder
 @Getter
 @DynamicInsert
 @DynamicUpdate
@@ -37,17 +33,24 @@ public class CommonCode {
     private String commonCdId;
     @NotNull
     private String commonCdNm;
+
+    @NotNull
     private String commonCdDesc;
     @NotNull
     private String commonGroupCdId;
 
     @NotNull
     private String commonGroupCdNm;
+
+    @NotNull
     private String commonGroupCdDesc;
 
     private String commonCdEditYn;
+
     private int commonSortSeq;
+
     private String useYn;
+
     private String regId;
 
     private LocalDateTime regDtime;
