@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import javax.persistence.*;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,6 +17,8 @@ import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Getter
 @DynamicInsert
 @DynamicUpdate
@@ -24,6 +27,7 @@ public class CommonCode {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int commonNo;
     private long commonNo;
 
     @NotNull
@@ -35,6 +39,7 @@ public class CommonCode {
 
     @NotNull
     private String commonCdNm;
+    private String commonCdDesc;
 
     @NotNull
     private String commonCdDesc;
@@ -44,6 +49,8 @@ public class CommonCode {
 
     @NotNull
     private String commonGroupCdNm;
+    private String commonGroupCdDesc;
+    private int commonSortSeq;
 
     @NotNull
     private String commonGroupCdDesc;

@@ -1,9 +1,7 @@
 package com.moyeohaeng.tripplannerbo.common.domain.response;
 
 import com.moyeohaeng.tripplannerbo.common.domain.CommonCode;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Id;
 import java.time.LocalDateTime;
@@ -12,20 +10,16 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommonCodeRes {
-    @Id
-    private String commonNo;
-    private String commonType;
-    private String commonCdId;
-    private String commonCdNm;
-    private String commonGroupCdId;
-    private String commonGroupCdNm;
-    private String commonCdEditYn;
-    private String useYn;
-    private String regId;
-    private LocalDateTime regDtime;
-    private String uptId;
-    private LocalDateTime uptDtime;
-    @Setter List<CommonCodeRes> commonCodes; // 결과 코드 값
+
+    private String id;  // 사용자 설정 id 요소 값
+    private String defaultText;
+    private boolean defaultOption; // '전체' on/off
+    private boolean checked; // 체크 여부
+    private boolean disabled; // 수정 불가 여부
+    private CommonCode commonCode;
+    List<CommonCodeRes> commonCodes; // 결과 코드 값
 
 }

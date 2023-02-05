@@ -18,11 +18,14 @@ public class CommonRepository {
 
     private final JPAQueryFactory queryFactory;
 
-    public List<CommonCodeRes> searchCommonCode(CommonCodeReq parameter){
+    public List<CommonCodeRes> searchCommonCode(CommonCode parameter){
 
         List<CommonCodeRes> result = queryFactory
                 .select(Projections.fields(CommonCodeRes.class, commonCode))
+                .from(commonCode)
+                .where(commonCode.commonGroupCdId.eq(parameter.getCommonGroupCdId()))
                 .fetch();
+
         return result;
     }
 }

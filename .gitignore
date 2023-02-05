@@ -48,6 +48,7 @@ out/
 .metadata
 bin/
 tmp/
+*.sql
 *.tmp
 *.bak
 *.swp

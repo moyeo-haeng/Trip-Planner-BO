@@ -1,5 +1,7 @@
 package com.moyeohaeng.tripplannerbo.sample.controller;
 
+import com.moyeohaeng.tripplannerbo.common.util.CommonUtil;
+import com.moyeohaeng.tripplannerbo.common.utility.CommonUtility;
 import com.moyeohaeng.tripplannerbo.sample.domain.SampleModel;
 import com.moyeohaeng.tripplannerbo.sample.service.SampleService;
 import lombok.RequiredArgsConstructor;
@@ -10,14 +12,16 @@ import java.util.List;
 
 @Controller
 @RequiredArgsConstructor
-public class SampleController {
+public class SampleController extends CommonUtility {
 
     private final SampleService sampleService;
-
     @GetMapping("sample")
     public String Sample(){
 
-        List<SampleModel> sampleModelList = sampleService.sample();
+         // 딱 한번 실행해서 데이터 저장하고 주석처리하고 테스트 해야돼!
+//        test();
+
+//        List<SampleModel> sampleModelList = sampleService.sample();
 
         return "/sample/sample";
     }
