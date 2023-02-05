@@ -18,7 +18,6 @@ public class SampleController extends CommonUtility {
     @GetMapping("sample")
     public String Sample(){
 
-         // 딱 한번 실행해서 데이터 저장하고 주석처리하고 테스트 해야돼!
 //        test();
 
 //        List<SampleModel> sampleModelList = sampleService.sample();
