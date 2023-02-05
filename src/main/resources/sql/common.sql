@@ -16,4 +16,16 @@ CREATE TABLE `COMMON_CODE` (
     `UPT_DTIME` datetime COMMENT '수정일자'
 ) COMMENT '공통 코드';
 
-drop table common_code;
+CREATE TABLE `MENU` (
+  `MENU_NO` bigint PRIMARY KEY auto_increment COMMENT '메뉴번호',
+  `MENU_NAME` varchar(255) COMMENT '메뉴이름',
+  `MENU_URL` varchar(255) COMMENT '메뉴주소값',
+  `MENU_SEQ` int COMMENT '메뉴순번',
+  `MENU_PARENT_NO` varchar(255) COMMENT '메뉴부모번호',
+  `SITE_DIVI_CD` varchar(255) COMMENT '사이트구분코드',
+  `USE_YN` varchar(255) NOT NULL DEFAULT 'Y' COMMENT '사용 여부',
+  `REG_ID` varchar(255) NOT NULL COMMENT '등록 id',
+  `REG_DTIME` datetime NOT NULL DEFAULT (now()) COMMENT '등록일시',
+  `UPT_ID` varchar(255) COMMENT '수정 id',
+  `UPT_DTIME` datetime COMMENT '수정일시'
+);
