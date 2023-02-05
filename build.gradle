@@ -45,13 +45,7 @@ dependencies {
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api" // java.lang.NoClassDefFoundError (javax.annotation.Generated) 대응 코드
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api" // java.lang.NoClassDefFoundError (javax.annotation.Entity) 대응 코드
 
-	//쿼리 로그
-	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
-
-	implementation 'mysql:mysql-connector-java'
-	
-	// 정적리소스 실시간 반영
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6' //쿼리 로그
 }
 
 tasks.named('test') {
