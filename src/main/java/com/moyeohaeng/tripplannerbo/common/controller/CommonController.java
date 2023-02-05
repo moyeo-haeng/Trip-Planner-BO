@@ -27,4 +27,14 @@ public class CommonController {
     public String commCdMgmt() {
         return "common/commCdMgmt";
     }
+
+    @GetMapping("/calendarTest")
+    public String calendarTest() {
+        return "common/calendar";
+    }
+
+    @GetMapping("/layerPopupTest")
+    public String layerPopupTest() {
+        return "common/layerPopup";
+    }
 }
