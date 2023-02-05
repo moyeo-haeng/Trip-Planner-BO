@@ -18,6 +18,7 @@ public class CommonUtil extends CommonUtility {
 
         return CommonCodeRes.builder()
                 .id(parameter.getId())
+                .defaultText(parameter.getDefaultText())
                 .defaultOption(parameter.isDefaultOption())
                 .disabled(parameter.isDisabled())
                 .checked(parameter.isChecked())

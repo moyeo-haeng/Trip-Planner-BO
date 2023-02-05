@@ -15,6 +15,7 @@ import java.util.List;
 public class CommonCodeRes {
 
     private String id;  // 사용자 설정 id 요소 값
+    private String defaultText;
     private boolean defaultOption; // '전체' on/off
     private boolean checked; // 체크 여부
     private boolean disabled; // 수정 불가 여부

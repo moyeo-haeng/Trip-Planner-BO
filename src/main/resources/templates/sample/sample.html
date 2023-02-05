@@ -8,6 +8,7 @@
 
 <body>
     <div class="container">
+        <h2>&lt;CHECK BOX&gt;</h2>
         <th:block th:with="code =${CommonCodeReq.builder().id('statCd').commonGroupCdId('DS0001').defaultOption(false).build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
             <span th:replace="common/fragments/CodeCheckBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
@@ -23,6 +24,23 @@
         <th:block th:with="code =${CommonCodeReq.builder().id('statCd').commonGroupCdId('DS0001').disabled(true).checked(true).build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
             <span th:replace="common/fragments/CodeCheckBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
+
+        <h2>&lt;SELECT BOX&gt;</h2>
+        <h3>- 기본</h3>
+        <th:block th:with="code =${CommonCodeReq.builder().id('statCd').commonGroupCdId('DS0001').build()}">
+            <span th:replace="common/fragments/CodeSelectBox :: combo(${@commonUtil.createElement(code)})"></span>
+        </th:block>
+
+        <h3>- disabled</h3>
+        <th:block th:with="code =${CommonCodeReq.builder().id('statCd').commonGroupCdId('DS0001').disabled(true).build()}">
+            <span th:replace="common/fragments/CodeSelectBox :: combo(${@commonUtil.createElement(code)})"></span>
+        </th:block>
+
+        <h3>- defaultText</h3>
+        <th:block th:with="code =${CommonCodeReq.builder().id('statCd').commonGroupCdId('DS0001').defaultText('전시상태코드').build()}">
+            <span th:replace="common/fragments/CodeSelectBox :: combo(${@commonUtil.createElement(code)})"></span>
+        </th:block>
+
 
 
     </div>

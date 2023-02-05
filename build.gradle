@@ -48,6 +48,9 @@ dependencies {
 	implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.5.6'
 
 	implementation 'mysql:mysql-connector-java'
+	
+	// 정적리소스 실시간 반영
+	developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
 
 tasks.named('test') {
