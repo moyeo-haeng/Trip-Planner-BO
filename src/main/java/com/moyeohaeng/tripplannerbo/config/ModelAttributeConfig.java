@@ -1,6 +1,6 @@
 package com.moyeohaeng.tripplannerbo.config;
 
-import com.moyeohaeng.tripplannerbo.common.domain.request.CommonCodeReq;
+import com.moyeohaeng.tripplannerbo.common.domain.request.CommonCodeBoxReq;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
                     // -> 전역 컨트롤러를 만듦
 public class ModelAttributeConfig {
 
-    @ModelAttribute("CommonCodeReq") // 도메인 객체나 DTO프로퍼티에 요청 파라미터를 한 번에 받을 수 있는 @ModelAttribute를 전역으로 사용
-    public Class<CommonCodeReq> CommonCodeReq() {
-        return CommonCodeReq.class;
+    @ModelAttribute("CommonCodeBoxReq") // 도메인 객체나 DTO프로퍼티에 요청 파라미터를 한 번에 받을 수 있는 @ModelAttribute를 전역으로 사용
+    public Class<CommonCodeBoxReq> CommonCodeReq() {
+        return CommonCodeBoxReq.class;
     }
 }

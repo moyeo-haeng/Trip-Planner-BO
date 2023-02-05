@@ -1,10 +1,9 @@
 package com.moyeohaeng.tripplannerbo.common.utility;
 
 import com.moyeohaeng.tripplannerbo.common.domain.CommonCode;
-import com.moyeohaeng.tripplannerbo.common.domain.request.CommonCodeReq;
-import com.moyeohaeng.tripplannerbo.common.domain.response.CommonCodeRes;
+import com.moyeohaeng.tripplannerbo.common.domain.response.CommonCodeBoxRes;
 import com.moyeohaeng.tripplannerbo.common.repository.CommonCodeRepository;
-import com.moyeohaeng.tripplannerbo.common.repository.CommonRepository;
+import com.moyeohaeng.tripplannerbo.common.repository.CommonCodeDslRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
@@ -13,12 +12,12 @@ import java.util.List;
 public class CommonUtility {
 
     @Autowired
-    private CommonRepository commonRepository;
+    private CommonCodeDslRepository commonCodeDslRepository;
     @Autowired
     private CommonCodeRepository commonCodeRepository;
 
-    public final List<CommonCodeRes> searchCommonCode(CommonCode parameter) {
-        return commonRepository.searchCommonCode(parameter);
+    public final List<CommonCodeBoxRes> searchCommonCode(CommonCode parameter) {
+        return commonCodeDslRepository.searchCommonCode(parameter);
     }
 
 
