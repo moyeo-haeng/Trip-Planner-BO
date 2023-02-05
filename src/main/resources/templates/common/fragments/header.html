@@ -1,4 +1,4 @@
-<header class="header" id="header" th:fragment="headerFragment">
+<header class="header" id="header" th:fragment="headerFragment(menuInfoList)">
 
 <!--메뉴바 추가 부분-->
 <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
@@ -6,58 +6,10 @@
 
   <div class="collapse navbar-collapse" id="navbarsExample03">
     <ul class="navbar-nav mr-auto">
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navBar01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">회원관리</a>
+      <li class="nav-item dropdown" th:each="menuInfo : ${menuInfoList}">
+        <a class="nav-link dropdown-toggle" href="#" id="navBar01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" th:text="${menuInfo.menuName}"></a>
         <div class="dropdown-menu" aria-labelledby="navBar01">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navBar02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">상품관리</a>
-        <div class="dropdown-menu" aria-labelledby="navBar02">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navBar03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">예약관리</a>
-        <div class="dropdown-menu" aria-labelledby="navBar03">
-          <a class="dropdown-item" href="/reservation/initReservation">예약조회</a>
-          <a class="dropdown-item" href="#">환불관리</a>
-          <a class="dropdown-item" href="#"></a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navBar04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">결제관리</a>
-        <div class="dropdown-menu" aria-labelledby="navBar04">
-          <a class="dropdown-item" href="#">결제수단관리</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navBar05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">이벤트관리</a>
-        <div class="dropdown-menu" aria-labelledby="navBar05">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navBar06" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">정산관리</a>
-        <div class="dropdown-menu" aria-labelledby="navBar06">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navBar07" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">시스템관리</a>
-        <div class="dropdown-menu" aria-labelledby="navBar07">
-          <a class="dropdown-item" href="/comm-cd-mgmt">공통 코드 관리</a>
-          <a class="dropdown-item" href="#">메뉴관리</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" th:each="childrenInfo : ${menuInfo.children}" th:href="@{${childrenInfo.menuUrl}}" th:text="${childrenInfo.menuName}"></a>
         </div>
       </li>
     </ul>
