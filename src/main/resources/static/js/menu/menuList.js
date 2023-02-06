@@ -1,6 +1,6 @@
-import Grid from 'tui-grid';
-
 const initGrid = () => {
+
+	const Grid = tui.Grid;
 
 	Grid.applyTheme('defualt', {
 		cell: {
@@ -22,7 +22,7 @@ const initGrid = () => {
 		data: {
 			api: {
 				readData: {
-					url: '/menu/menuInfoList',
+					url: '/menu/menuInfoList2',
 					method: 'GET'
 				}
 			}
