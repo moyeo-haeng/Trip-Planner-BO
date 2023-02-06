@@ -22,8 +22,7 @@ public class MenuController {
 	private final MenuService menuService;
 	
     @GetMapping("/menuList")
-    public String menuList(Model model) {
-        model.addAttribute("menuInfoList", menuService.menuInfoList());
+    public String menuList() {
         return "menu/menuList";
     }
 
@@ -32,21 +31,26 @@ public class MenuController {
         return menuService.menuInfoList();
     }
 
-    @GetMapping("/menuForm")
-    public void menuForm() {
-        MenuRequest menuRequest = MenuRequest.builder()
-                                  .menuName("메뉴")
-                                  .menuUrl("")
-                                  .menuSeq(1)
-                                  .menuParentNo("")
-                                  .siteDiviCd("00")
-                                  .useYn("Y")
-                                  .regId("CEO")
-                                  .regDtime(LocalDate.now().atStartOfDay())
-                                  .uptId("")
-                                  .uptDtime(LocalDate.now().atStartOfDay())
-                                  .build();
+    @GetMapping("/menuSave")
+    public void menuSave(MenuRequest menuRequest) {
+        MenuRequest menuFormInfo = MenuRequest.builder()
+                                  			  .menuName("메뉴")
+                                			  .menuUrl("")
+                                			  .menuSeq(1)
+                                			  .menuParentNo(null)
+                                			  .siteDiviCd("00")
+                                			  .useYn("Y")
+                                			  .regId("CEO")
+                                			  .regDtime(LocalDate.now().atStartOfDay())
+                                			  .uptId("")
+                                			  .uptDtime(LocalDate.now().atStartOfDay())
+                                			  .build();
 
-        menuService.menuForm(menuRequest);
+    	if(menuRequest.getMenuParentNo() == null) {
+    		menuService.menuSave(menuFormInfo);
+    	} else {
+    		menuService.menuChildSave(menuFormInfo);
+    	}
     }
+    
 }

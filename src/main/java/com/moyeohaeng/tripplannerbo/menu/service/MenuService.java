@@ -24,8 +24,14 @@ public class MenuService {
         return menuInfoList.stream().map(MenuResponse::new).collect(Collectors.toList());
     }
 
-    public void menuForm(MenuRequest menuRequest) {
+    public void menuSave(MenuRequest menuRequest) {
         Menu menu = new Menu(menuRequest);
         menuRepository.save(menu);
+    }
+    
+    public void menuChildSave(MenuRequest menuRequest) {
+    	Menu parent = menuRepository.findById(menuRequest.getMenuParentNo());
+    	Menu children = new Menu(menuRequest);
+    	parent.addChildrenmenu(children);
     }
 }

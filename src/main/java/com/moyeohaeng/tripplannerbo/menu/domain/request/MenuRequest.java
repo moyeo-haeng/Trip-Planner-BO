@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 public class MenuRequest {
 
-    private Long menuNo;
+    private String menuNo;
     private String menuName;
     private String menuUrl;
     private int menuSeq;
@@ -22,7 +22,7 @@ public class MenuRequest {
     private LocalDateTime uptDtime;
 
     @Builder
-    public MenuRequest (Long menuNo, String menuName, String menuUrl, int menuSeq, String menuParentNo, String siteDiviCd, String useYn, String regId, LocalDateTime regDtime, String uptId, LocalDateTime uptDtime) {
+    public MenuRequest (String menuNo, String menuName, String menuUrl, int menuSeq, String menuParentNo, String siteDiviCd, String useYn, String regId, LocalDateTime regDtime, String uptId, LocalDateTime uptDtime) {
         this.menuNo = menuNo;
         this.menuName = menuName;
         this.menuUrl = menuUrl;

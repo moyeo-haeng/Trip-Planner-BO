@@ -15,8 +15,8 @@ import java.util.List;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Menu {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long menuNo;
+    @Id @GeneratedValue
+    private String menuNo;
 
     private String menuName;
 
@@ -35,16 +35,18 @@ public class Menu {
     private String uptId;
 
     private LocalDateTime uptDtime;
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "menu_parent_no")
     private Menu parent;
+    
     @OneToMany(mappedBy = "parent")
     private List<Menu> children = new ArrayList<>();
 
-//    public void addChildrenmenu(Menu children) {
-//        this.children.add(children);
-//        children.setParent(this);
-//    }
+    public void addChildrenmenu(Menu children) {
+        this.children.add(children);
+        children.setParent(this);
+    }
 
     public Menu (final MenuRequest menuRequest) {
         this.menuNo = menuRequest.getMenuNo();

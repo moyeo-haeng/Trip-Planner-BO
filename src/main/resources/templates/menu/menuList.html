@@ -53,13 +53,4 @@
 </th:block>
 </body>
 </html>
-<script th:src="@{/ts/menu/menuList.ts}"></script>
-<script th:inline="javascript">
-    window.onload = () => {
-
-        const createdGrid = initGrid();
-        const sampleData = [[${menuInfoList}]];
-        createdGrid.resetData(sampleData);
-
-    }
-</script>
+<script th:src="@{/js/menu/menuList.js}"></script>
