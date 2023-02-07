@@ -109,4 +109,39 @@ const initGrid = () => {
 window.onload = () => {
 
 	initGrid();
+
+	grid.on('expand', (ev) => {
+		const { rowKey } = ev;
+		const descendantRows = grid.getDescendantRows(rowKey);
+
+		console.log('rowKey: ' + rowKey);
+		console.log('descendantRows: ' + descendantRows);
+
+//		if (!descendantRows.length) {
+//			grid.appendRow(
+//				{
+//					name: 'dynamic loading data',
+//					_children: [
+//						{
+//							name: 'leaf row'
+//						},
+//						{
+//							name: 'internal row',
+//							_children: []
+//						}
+//					]
+//				},
+//				{ parentRowKey: rowKey }
+//			);
+//		}
+	});
+
+	grid.on('collapse', ev => {
+		const { rowKey } = ev;
+		const descendantRows = grid.getDescendantRows(rowKey);
+
+		console.log('rowKey: ' + rowKey);
+		console.log('descendantRows: ' + descendantRows);
+	});
+
 }
