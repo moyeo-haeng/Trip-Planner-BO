@@ -10,4 +10,5 @@ import java.util.List;
 public interface MenuCustomRepository {
 
     List<Menu> menuInfoList();
+    Menu useSaveChildren(String menuNo);
 }

@@ -30,9 +30,7 @@ public class MenuService {
     }
     
     public void menuChildSave(MenuRequest menuRequest) {
-    	Menu menu = null;
-    	menu.setMenuNo(menuRequest.getMenuParentNo());
-    	Menu parent = menuRepository.findById(menu.getMenuNo());
+    	Menu parent = menuCustomRepository.useSaveChildren(menuRequest.getMenuParentNo());
     	Menu children = new Menu(menuRequest);
     	parent.addChildrenmenu(children);
     }
