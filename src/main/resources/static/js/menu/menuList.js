@@ -17,6 +17,19 @@ const initGrid = () => {
 		}
 	});
 
+	$.ajax({
+		type: "GET",
+		url: "/menu/menuInfoList",
+		dataType: "json",
+		contentType: "application/json; charset=utf-8",
+        error: function() {
+			console.log('통신실패!!');
+		},
+		success: function(data) {
+			console.log("통신데이터 값 : " + data);
+		}
+	});
+
 	const menuListGrid = new Grid({
 		el: document.getElementById('menuListGrid'),
 		data: {
@@ -108,7 +121,7 @@ const initGrid = () => {
 
 window.onload = () => {
 
-	const menuListGrid = initGrid();
+	initGrid();
 
 	// menuListGrid.on('expand', (ev) => {
 	// 	const rowKey = ev;
