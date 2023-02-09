@@ -35,25 +35,6 @@ public class MenuController {
         return menuService.menuInfoList();
     }
 
-	@GetMapping("/menuInfoList2")
-	@ResponseBody
-	public Map menuInfoList2() {
-		Map result = new HashMap<String, Object>();
-		Map result2 = new HashMap<String, Object>();
-		Map result3 = new HashMap<String, Object>();
-
-		result3.put("page", 1);
-		result3.put("totalCount", 100);
-
-		result2.put("contents", menuService.menuInfoList());
-		result2.put("pagination", result3);
-
-
-		result.put("result", true);
-		result.put("data", result2);
-		return result;
-	}
-
     @GetMapping("/menuSave")
     public void menuSave(MenuRequest menuRequest) {
         MenuRequest menuFormInfo = MenuRequest.builder()

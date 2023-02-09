@@ -1,6 +1,7 @@
 const initGrid = () => {
 
 	const Grid = tui.Grid;
+	let gridData;
 
 	Grid.applyTheme('defualt', {
 		cell: {
@@ -20,26 +21,28 @@ const initGrid = () => {
 	$.ajax({
 		type: "GET",
 		url: "/menu/menuInfoList",
+		async: false,
 		dataType: "json",
 		contentType: "application/json; charset=utf-8",
         error: function() {
 			console.log('통신실패!!');
 		},
 		success: function(data) {
-			console.log("통신데이터 값 : " + data);
+
+			for(let i=0 ; i < data.length ; i++){
+				data[i]._children = data[i].children;
+				delete data[i].children;
+			}
+
+			gridData = data;
 		}
 	});
 
+	alert(gridData);
+
 	const menuListGrid = new Grid({
 		el: document.getElementById('menuListGrid'),
-		data: {
-			api: {
-				readData: {
-					url: '/menu/menuInfoList2',
-					method: 'GET'
-				}
-			}
-		},
+		data: gridData,
 		scrollX: true,
 		scrollY: true,
 		draggable: false,
