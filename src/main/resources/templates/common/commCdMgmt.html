@@ -4,13 +4,22 @@
 <head>
   <meta charset="UTF-8">
   <title>공통 코드 관리</title>
+  <style>
+    #section-group {
+      margin: 5px 0 20px 0;
+    }
+    #section-detail {
+      margin: 20px 0 10px 0;
+    }
+  </style>
 </head>
 <body>
 <th:block layout:fragment="content">
   <div id="contents">
-    <section>
+    <section id="section-search">
       <h3 class="text-left"> 공통 코드 관리
         <div class="float-right">
+          <button type="button" id="btn-test" class="btn btn-danger">테스트</button>
           <button type="button" class="btn btn-primary">검색</button>
           <button type="button" class="btn btn-primary">초기화</button>
         </div>
@@ -57,16 +66,30 @@
               </tr>
               <tr>
                 <th class="table-active">
-                  <span><label for="codeId">공통 코드 ID</label></span>
+                  <span><label for="grp-cd-id">그룹 공통 코드 ID</label></span>
                 </th>
                 <td>
-                  <span><input type="text" id="codeId"/></span>
+                  <span><input type="text" id="grp-cd-id"/></span>
                 </td>
                 <th class="table-active">
-                  <span><label for="codeName">공통 코드 이름</label></span>
+                  <span><label for="grp-cd-nm">그룹 공통 코드명</label></span>
                 </th>
                 <td>
-                  <span><input type="text" id="codeName"/></span>
+                  <span><input type="text" id="grp-cd-nm"/></span>
+                </td>
+              </tr>
+              <tr>
+                <th class="table-active">
+                  <span><label for="dtl-cd-id">상세 공통 코드 ID</label></span>
+                </th>
+                <td>
+                  <span><input type="text" id="dtl-cd-id"/></span>
+                </td>
+                <th class="table-active">
+                  <span><label for="dtl-cd-nm">상세 공통 코드명</label></span>
+                </th>
+                <td>
+                  <span><input type="text" id="dtl-cd-nm"/></span>
                 </td>
               </tr>
               </tbody>
@@ -77,35 +100,40 @@
     </section>
 
     <!-- GRID -->
-    <section>
-      <div id="commCdInfoListGrid"></div>
-      <div class="col-md-4">
-        <span>콘솔 창에 저장한 데이터가 출력됩니다요</span>
-        <form id="form-add-comm-cd"> <!-- insert 테스트용 form-->
-          <input type="text" class="form-control" id="comm-type" name="comm-type" placeholder="Type"/>
-          <input type="text" class="form-control" id="comm-cd-id" name="comm-cd-id" placeholder="Code id"/>
-          <input type="text" class="form-control" id="comm-cd-nm" name="comm-cd-nm" placeholder="code Name"/>
-          <input type="text" class="form-control" id="comm-cd-desc" name="comm-cd-desc" placeholder="Code Desc"/>
-          <input type="text" class="form-control" id="comm-grp-cd-id" name="comm-grp-cd-id" placeholder="Group Code Id"/>
-          <input type="text" class="form-control" id="comm-grp-cd-nm" name="comm-grp-cd-nm" placeholder="Group Code Name"/>
-          <input type="text" class="form-control" id="comm-grp-cd-desc" name="comm-grp-cd-desc" placeholder="Group Code Desc"/>
-          <input type="number" class="form-control" id="comm-sort-seq" name="comm-sort-seq" placeholder="Sort Seq (default: 1)"/>
-          <input type="number" class="form-control" id="comm-cd-edit-yn" name="comm-cd-edit-yn" placeholder="Edit Yn (default: Y)"/>
-          <input type="number" class="form-control" id="use-yn" name="use-yn" placeholder="Use Yn (default: Y)"/>
-          <input type="text" class="form-control" id="reg-id" name="reg-id" placeholder="Reg Id"/>
-        </form>
+    <section id="section-group">
+      <div id="commGrpCdInfoListGrid"></div>
+      <div class="btn-group float-right" role="group">
+        <button type="button" class="btn-add btn btn-light">추가</button>
+        <button type="button" class="btn-save btn btn-primary">저장</button>
       </div>
-      <div class="col-md-8" id="result">
+    </section>
 
+    <section id="section-detail">
+      <div id="commDtlCdInfoListGrid"></div>
+      <div class="btn-group float-right" role="group">
+        <button type="button" class="btn-add btn btn-light">추가</button>
+        <button type="button" class="btn-save btn btn-primary">저장</button>
       </div>
     </section>
   </div>
-  <div class="buttons">
-    <button type="button" id="btn-add">추가</button> <!-- 그리드 상단에 행 추가 -->
-    <button type="button" id="btn-save">저장</button>
-  </div>
 </th:block>
+
+<!--      <div class="col-md-4">-->
+<!--        <span>콘솔 창에 저장한 데이터가 출력됩니다요</span>-->
+<!--        <form id="form-add-comm-cd"> &lt;!&ndash; insert 테스트용 form&ndash;&gt;-->
+<!--          <input type="text" class="form-control" id="comm-type" name="comm-type" placeholder="Type"/>-->
+<!--          <input type="text" class="form-control" id="comm-cd-id" name="comm-cd-id" placeholder="Code id"/>-->
+<!--          <input type="text" class="form-control" id="comm-cd-nm" name="comm-cd-nm" placeholder="code Name"/>-->
+<!--          <input type="text" class="form-control" id="comm-cd-desc" name="comm-cd-desc" placeholder="Code Desc"/>-->
+<!--          <input type="text" class="form-control" id="comm-grp-cd-id" name="comm-grp-cd-id" placeholder="Group Code Id"/>-->
+<!--          <input type="text" class="form-control" id="comm-grp-cd-nm" name="comm-grp-cd-nm" placeholder="Group Code Name"/>-->
+<!--          <input type="text" class="form-control" id="comm-grp-cd-desc" name="comm-grp-cd-desc" placeholder="Group Code Desc"/>-->
+<!--          <input type="number" class="form-control" id="comm-sort-seq" name="comm-sort-seq" placeholder="Sort Seq (default: 1)"/>-->
+<!--          <input type="number" class="form-control" id="comm-cd-edit-yn" name="comm-cd-edit-yn" placeholder="Edit Yn (default: Y)"/>-->
+<!--          <input type="number" class="form-control" id="use-yn" name="use-yn" placeholder="Use Yn (default: Y)"/>-->
+<!--          <input type="text" class="form-control" id="reg-id" name="reg-id" placeholder="Reg Id"/>-->
+<!--        </form>-->
+<!--      </div>-->
 </body>
 </html>
 <script type="text/javascript" th:src="@{/js/common/commCdMgmt.js}"></script>
-<script th:src="@{/ts/common/commCdInfo.ts}"></script>

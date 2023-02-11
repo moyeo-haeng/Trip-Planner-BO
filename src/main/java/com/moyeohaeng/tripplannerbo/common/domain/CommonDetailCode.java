@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.PrePersist;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -20,6 +21,7 @@ import java.time.LocalDateTime;
 @DynamicInsert
 @DynamicUpdate
 @Entity
+@Table(name="COMMON_CODE")
 public class CommonDetailCode {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

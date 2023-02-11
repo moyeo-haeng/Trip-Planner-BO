@@ -1,3 +1,272 @@
+let allGrpData;
+let allDtlData;
+
+window.addEventListener('DOMContentLoaded', function () {
+    const GrpGrid = initGrpGrid();
+    const DtlGrid = initDtlGrid();
+
+    $.ajax({
+        type: 'GET',
+        url: '/api/v1/commGrp/all',
+        async: false,
+        dataType: 'json',
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            GrpGrid.resetData(data)
+        }
+    }).fail(function (error) {
+        console.log(JSON.stringify(error));
+    });
+
+    $.ajax({
+        type: 'GET',
+        url: '/api/v1/commDtl/all',
+        async: false,
+        dataType: "json",
+        contentType: "application/json; charset=utf-8",
+        success: function (data) {
+            DtlGrid.resetData(data)
+        }
+    }).fail(function (error) {
+        console.log(JSON.stringify(error));
+    });
+
+    /* Button click event Start */
+    const grpAppendBtn = document.querySelector('#section-group > .btn-group > .btn-add');
+    const dtlAppendBtn = document.querySelector('#section-detail > .btn-group > .btn-add');
+    const newGrpRow = {
+        checkGrpCd: '<input type="checkbox" id="check-grp-cd" name="check-grp-cd" value="newG">'
+    };
+
+    grpAppendBtn.addEventListener('click', event => {
+        GrpGrid.appendRow(newGrpRow, {
+            at: 0
+        });
+    }, false);
+
+    dtlAppendBtn.addEventListener('click', event => {
+        DtlGrid.appendRow(newDtlRow, {
+            at: 0
+        });
+    }, false);
+
+
+    /* Button click event End */
+});
+
+/* Grid Setting Start */
+const Grid = tui.Grid;
+
+const initGrpGrid = () => {
+    Grid.applyTheme('default', {
+        cell: {
+            normal: {
+                border: 'black'
+            },
+            header: {
+                background: 'gray',
+                text: 'white'
+            }
+        }
+    });
+
+    const commGrpCdInfoListGrid = new Grid({
+        el: document.getElementById('commGrpCdInfoListGrid'),
+        // data: allGrpData,
+        scrollX: true,
+        scrollY: true,
+        draggable: false,
+        header: {height: 30},
+        bodyHeight: 300,
+        contextMenu: null,
+        columns: [
+            {
+                header: 'Chk.',
+                name: 'commonGrpCdNo',
+                align: 'center',
+                width: 20,
+                whiteSpace: 'normal',
+                editor: 'checkbox',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '부서',
+                name: 'commonType',
+                align: 'center',
+                width: 100,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '그룹 공통 코드',
+                name: 'commonGrpCdId',
+                align: 'center',
+                width: 200,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '그룹 공통 코드명',
+                name: 'commonGrpCdNm',
+                align: 'center',
+                width: 200,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '정렬 순서',
+                name: 'commonSortSeq',
+                align: 'center',
+                width: 100,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '사용 여부',
+                name: 'useYn',
+                align: 'center',
+                width: 100,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+        ]
+    });
+    return commGrpCdInfoListGrid;
+};
+
+const initDtlGrid = () => {
+    Grid.applyTheme('default', {
+        cell: {
+            normal: {
+                border: 'black'
+            },
+            header: {
+                background: 'gray',
+                text: 'white'
+            }
+        }
+    });
+
+    const commDtlCdInfoListGrid = new Grid({
+        el: document.getElementById('commDtlCdInfoListGrid'),
+        data: allDtlData,
+        scrollX: true,
+        scrollY: true,
+        draggable: false,
+        header: {height: 30},
+        bodyHeight: 300,
+        contextMenu: null,
+        columns: [
+            {
+                header: 'Chk.',
+                name: 'commonCdNo',
+                align: 'center',
+                width: 10,
+                whiteSpace: 'normal',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '상세 공통 코드',
+                name: 'commonCdId',
+                align: 'center',
+                width: 200,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '상세 공통 코드명',
+                name: 'commonCdNm',
+                align: 'center',
+                width: 200,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '구분 1',
+                name: 'commonTypeCd1',
+                align: 'center',
+                width: 100,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '구분 2',
+                name: 'commonTypeCd2',
+                align: 'center',
+                width: 100,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '구분 3',
+                name: 'commonTypeCd3',
+                align: 'center',
+                width: 100,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '정렬 순서',
+                name: 'commonSortSeq',
+                align: 'center',
+                width: 100,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+            {
+                header: '사용 여부',
+                name: 'useYn',
+                align: 'center',
+                width: 100,
+                whiteSpace: 'normal',
+                editor: 'text',
+                formatter: function(e) {
+                    return e.value
+                }
+            },
+        ]
+    });
+    return commDtlCdInfoListGrid;
+};
+/* Grid Setting End */
+
 let main = {
     init: function () {
         let _this = this;

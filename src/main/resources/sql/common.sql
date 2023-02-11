@@ -10,12 +10,12 @@ CREATE TABLE `COMMON_GROUP_CODE` (
   `UPT_ID` varchar(255) COMMENT '수정 id',
   `UPT_DTIME` datetime COMMENT '수정일자',
   `USE_YN` varchar(1) NOT NULL DEFAULT 'Y' CHECK (USE_YN IN ('Y', 'N')) COMMENT '사용 여부'
-) COMMENT '공통 그룹 코드';
+) COMMENT '그룹 공통 코드';
 
 CREATE TABLE `COMMON_CODE` (
   `COMMON_CD_NO` bigint PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '공통 코드 테이블 no',
   `COMMON_GRP_CD_NO` bigint NOT NULL COMMENT '그룹 공통 코드 id', # COMMON_GROUP_CODE.COMMON_GRP_CD_NO
-  `COMMON_CD_ID` varchar(255) NOT NULL UNIQUE COMMENT '공통 코드 id',
+  `COMMON_CD_ID` varchar(255) NOT NULL COMMENT '공통 코드 id',
   `COMMON_CD_NM` varchar(255) NOT NULL COMMENT '공통 코드 이름',
   `COMMON_CD_DESC` varchar(255) COMMENT '공통 코드 설명',
   `COMMON_TYPE_CD_1` varchar(255) COMMENT '사용 구분자 1',
@@ -27,7 +27,7 @@ CREATE TABLE `COMMON_CODE` (
   `UPT_ID` varchar(255) COMMENT '수정 id',
   `UPT_DTIME` datetime COMMENT '수정일자',
   `USE_YN` varchar(1) NOT NULL DEFAULT 'Y' CHECK (USE_YN IN ('Y', 'N')) COMMENT '사용 여부'
-) COMMENT '공통 코드';
+) COMMENT '상세 공통 코드';
 
 CREATE TABLE `MENU` (
   `MENU_NO` bigint PRIMARY KEY auto_increment COMMENT '메뉴번호',
