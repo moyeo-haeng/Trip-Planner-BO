@@ -18,7 +18,7 @@ public class CommonUtil extends CommonUtility {
                 .defaultOption(parameter.isDefaultOption())
                 .disabled(parameter.isDisabled())
                 .checked(parameter.isChecked())
-                .commonCodes(searchCommonCode(parameter.toCommonCode()))
+                .commonCodes(searchCommonCode(parameter))
                 .build();
     }
 }
