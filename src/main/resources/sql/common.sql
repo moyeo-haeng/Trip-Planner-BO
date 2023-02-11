@@ -12,15 +12,15 @@ CREATE TABLE `COMMON_GROUP_CODE` (
   `USE_YN` varchar(1) NOT NULL DEFAULT 'Y' CHECK (USE_YN IN ('Y', 'N')) COMMENT '사용 여부'
 ) COMMENT '공통 그룹 코드';
 
-CREATE TABLE `COMMON_DETAIL_CODE` (
+CREATE TABLE `COMMON_CODE` (
   `COMMON_CD_NO` bigint PRIMARY KEY NOT NULL AUTO_INCREMENT COMMENT '공통 코드 테이블 no',
   `COMMON_GRP_CD_NO` bigint NOT NULL COMMENT '그룹 공통 코드 id', # COMMON_GROUP_CODE.COMMON_GRP_CD_NO
   `COMMON_CD_ID` varchar(255) NOT NULL UNIQUE COMMENT '공통 코드 id',
   `COMMON_CD_NM` varchar(255) NOT NULL COMMENT '공통 코드 이름',
   `COMMON_CD_DESC` varchar(255) COMMENT '공통 코드 설명',
-  `COMMON_TYPE_CD1` varchar(255) COMMENT '사용 구분자 1',
-  `COMMON_TYPE_CD2` varchar(255) COMMENT '사용 구분자 2',
-  `COMMON_TYPE_CD3` varchar(255) COMMENT '사용 구분자 3',
+  `COMMON_TYPE_CD_1` varchar(255) COMMENT '사용 구분자 1',
+  `COMMON_TYPE_CD_2` varchar(255) COMMENT '사용 구분자 2',
+  `COMMON_TYPE_CD_3` varchar(255) COMMENT '사용 구분자 3',
   `COMMON_SORT_SEQ` int DEFAULT (1) COMMENT '정렬 순서',
   `REG_ID` varchar(255) NOT NULL COMMENT '등록 id',
   `REG_DTIME` datetime NOT NULL DEFAULT (now()) COMMENT '등록일자',
