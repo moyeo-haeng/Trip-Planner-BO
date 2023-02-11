@@ -1,6 +1,3 @@
-let allGrpData;
-let allDtlData;
-
 window.addEventListener('DOMContentLoaded', function () {
     const GrpGrid = initGrpGrid();
     const DtlGrid = initDtlGrid();
@@ -72,7 +69,6 @@ const initGrpGrid = () => {
 
     const commGrpCdInfoListGrid = new Grid({
         el: document.getElementById('commGrpCdInfoListGrid'),
-        // data: allGrpData,
         scrollX: true,
         scrollY: true,
         draggable: false,
@@ -166,7 +162,6 @@ const initDtlGrid = () => {
 
     const commDtlCdInfoListGrid = new Grid({
         el: document.getElementById('commDtlCdInfoListGrid'),
-        data: allDtlData,
         scrollX: true,
         scrollY: true,
         draggable: false,
