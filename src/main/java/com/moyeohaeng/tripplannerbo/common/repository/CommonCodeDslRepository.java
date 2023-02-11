@@ -43,6 +43,9 @@ public class CommonCodeDslRepository {
         return result;
     }
 
+    /**
+     * 공통박스 where 조건 (BooleanBuilder사용해서 한번에 묶을까...)
+     */
     private BooleanExpression eqCommonCdId(String commonCdId){
         if(StringUtils.isEmpty(commonCdId)) return null;
         return commonDetailCode.commonCdId.eq(commonCdId);
