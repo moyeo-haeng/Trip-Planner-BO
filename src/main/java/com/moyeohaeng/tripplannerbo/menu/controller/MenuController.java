@@ -36,24 +36,25 @@ public class MenuController {
     }
 
     @GetMapping("/menuSave")
+    @ResponseBody
     public void menuSave(MenuRequest menuRequest) {
-        MenuRequest menuFormInfo = MenuRequest.builder()
-                                  			  .menuName("메뉴")
-                                			  .menuUrl("")
-                                			  .menuSeq(1)
-                                			  .menuParentNo(null)
-                                			  .siteDiviCd("00")
-                                			  .useYn("Y")
-                                			  .regId("CEO")
-                                			  .regDtime(LocalDate.now().atStartOfDay())
-                                			  .uptId("")
-                                			  .uptDtime(LocalDate.now().atStartOfDay())
-                                			  .build();
 
-    	if(menuRequest.getMenuParentNo() == null) {
-    		menuService.menuSave(menuFormInfo);
+        MenuRequest saveInfo = MenuRequest.builder()
+                                          .menuNo(menuRequest.getMenuNo())
+                                          .menuName(menuRequest.getMenuName())
+                                          .menuUrl(menuRequest.getMenuUrl())
+                                          .menuSeq(menuRequest.getMenuSeq())
+                                          .menuParentNo(menuRequest.getMenuParentNo())
+                                          .siteDiviCd(menuRequest.getSiteDiviCd())
+                                          .useYn(menuRequest.getUseYn())
+                                          .regId(menuRequest.getRegId())
+                                          .regDtime(LocalDate.now().atStartOfDay())
+                                          .build();
+
+    	if(saveInfo.getMenuParentNo() == "") {
+    		menuService.menuSave(saveInfo);
     	} else {
-    		menuService.menuChildSave(menuFormInfo);
+    		menuService.menuChildSave(saveInfo);
     	}
     }
     

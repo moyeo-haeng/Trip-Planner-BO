@@ -1,74 +1,71 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="/common/layout/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="/common/layout/layout">
 <head>
-<meta charset="UTF-8">
-<title>Title</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-	<th:block layout:fragment="content">
-		<div id="contents">
-			<section>
-				<h3 class="text-left">
-					<span> <i class="fa-solid fa-circle fa-xs"></i></span>메뉴조회 <span>
-						<div class="float-right">
-							<button type="button" class="btn btn-primary" id="srchBtn">조회</button>
-							<button type="button" class="btn btn-primary" id="resetBtn">초기화</button>
-						</div>
-					</span>
-				</h3>
+<th:block layout:fragment="content">
+    <div id="contents">
+        <section>
+            <h3 class="text-left">
+                <span> <i class="fa-solid fa-circle fa-xs"></i></span>메뉴조회
+<!--                    <span>-->
+<!--						<div class="float-right">-->
+<!--							<button type="button" class="btn btn-primary" id="srchBtn">조회</button>-->
+<!--							<button type="button" class="btn btn-primary" id="resetBtn">초기화</button>-->
+<!--						</div>-->
+<!--					</span>-->
+            </h3>
 
-				<!--SEARCH -->
-				<form id="searchForm" name="searchForm">
-					<fieldset>
-						<div id="search_reservation">
-							<table class="table table-bordered">
-								<tbody>
-									<tr>
-										<th class="table-active"><span> <label
-												th:for="revNo">메뉴명</label>
-										</span></th>
-										<td><span> <input type="text" id="revNo" readonly>
-										</span></td>
-									</tr>
-								</tbody>
-							</table>
-						</div>
-					</fieldset>
-				</form>
-			</section>
-			<!-- GRID -->
-			<section>
-				<div class="grid_btns">
-					<div class="gd_btns">
-						<button type="button" class="btn btn-primary" id="addLevelMenuBtn">
-							<span>동일레벨행추가</span>
-						</button>
-						<button type="button" class="btn btn-primary" id="addLowLevelMenuBtn">
-							<span>하위레벨행추가</span>
-						</button>
-					</div>
-					<div class="gd_btns">
-						<label for="info21">메뉴명</label> <span class="inputbox"
-							style="width: 125px;"> <input type="text" name="menu_nm"
-							id="menu_nm" class="input" />
-							<button type="button" onclick="">삭제</button>
-						</span>
-						<button type="button" class="btn btn-primary" id="srchFilterBtn">
-							<span>찾기</span>
-						</button>
-					</div>
-					<div class="gd_btns2">
-						<button type="button" class="btn btn-primary" id="saveMenuBtn">
-							<span>저장</span>
-						</button>
-					</div>
-				</div>
-				<div id="menuListGrid"></div>
-			</section>
-		</div>
-	</th:block>
+            <!--SEARCH -->
+<!--            <form id="searchForm" name="searchForm">-->
+<!--                <fieldset>-->
+<!--                    <div id="search_reservation">-->
+<!--                        <table class="table table-bordered">-->
+<!--                            <tbody>-->
+<!--                            <tr>-->
+<!--                                <th class="table-active"><span> <label-->
+<!--                                        th:for="revNo">메뉴명</label>-->
+<!--										</span></th>-->
+<!--                                <td><span> <input type="text" id="revNo" readonly>-->
+<!--										</span></td>-->
+<!--                            </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                </fieldset>-->
+<!--            </form>-->
+        </section>
+        <!-- GRID -->
+        <section>
+            <div class="grid_btns">
+                <div class="gd_btns">
+                    <button type="button" class="btn btn-primary" id="addLevelMenuBtn">
+                        <span>동일레벨행추가</span>
+                    </button>
+                    <button type="button" class="btn btn-primary" id="addLowLevelMenuBtn">
+                        <span>하위레벨행추가</span>
+                    </button>
+                </div>
+                <div class="gd_btns">
+                    <input type="text" name="menu_nm" id="menu_nm" class="input"/>
+                    <button type="button" class="btn btn-primary" id="srchFilterBtn">
+                        <span>찾기</span>
+                    </button>
+                </div>
+                <div class="gd_btns2 float-right">
+                    <button type="button" class="btn btn-primary" id="saveMenuBtn">
+                        <span>저장</span>
+                    </button>
+                </div>
+            </div>
+            <div id="menuListGrid"></div>
+        </section>
+    </div>
+</th:block>
 </body>
 </html>
 <script th:src="@{/js/menu/menuList.js}"></script>
