@@ -14,11 +14,10 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 public class MenuResponse {
 
-    private Long menuNo;
+    private String menuNo;
     private String menuName;
     private String menuUrl;
     private int menuSeq;
-    private String menuParentNo;
     private String siteDiviCd;
     private String useYn;
     private String regId;

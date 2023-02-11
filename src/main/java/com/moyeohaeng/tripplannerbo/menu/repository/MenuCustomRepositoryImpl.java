@@ -21,4 +21,9 @@ public class MenuCustomRepositoryImpl implements MenuCustomRepository{
     public List<Menu> menuInfoList() {
         return em.createQuery("select m from Menu m where m.parent is null", Menu.class).getResultList();
     }
+
+    @Override
+    public Menu useSaveChildren(String menuNo) {
+        return em.createQuery("select m from Menu m where m.menuNo = " + menuNo, Menu.class).getSingleResult();
+    }
 }

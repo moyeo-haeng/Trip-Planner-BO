@@ -10,9 +10,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequiredArgsConstructor
@@ -22,31 +25,37 @@ public class MenuController {
 	private final MenuService menuService;
 	
     @GetMapping("/menuList")
-    public String menuList(Model model) {
-        model.addAttribute("menuInfoList", menuService.menuInfoList());
+    public String menuList() {
         return "menu/menuList";
     }
 
     @GetMapping("/menuInfoList")
+	@ResponseBody
     public List<MenuResponse> menuInfoList() {
         return menuService.menuInfoList();
     }
 
-    @GetMapping("/menuForm")
-    public void menuForm() {
-        MenuRequest menuRequest = MenuRequest.builder()
-                                  .menuName("메뉴")
-                                  .menuUrl("")
-                                  .menuSeq(1)
-                                  .menuParentNo("")
-                                  .siteDiviCd("00")
-                                  .useYn("Y")
-                                  .regId("CEO")
-                                  .regDtime(LocalDate.now().atStartOfDay())
-                                  .uptId("")
-                                  .uptDtime(LocalDate.now().atStartOfDay())
-                                  .build();
+    @GetMapping("/menuSave")
+    @ResponseBody
+    public void menuSave(MenuRequest menuRequest) {
 
-        menuService.menuForm(menuRequest);
+        MenuRequest saveInfo = MenuRequest.builder()
+                                          .menuNo(menuRequest.getMenuNo())
+                                          .menuName(menuRequest.getMenuName())
+                                          .menuUrl(menuRequest.getMenuUrl())
+                                          .menuSeq(menuRequest.getMenuSeq())
+                                          .menuParentNo(menuRequest.getMenuParentNo())
+                                          .siteDiviCd(menuRequest.getSiteDiviCd())
+                                          .useYn(menuRequest.getUseYn())
+                                          .regId(menuRequest.getRegId())
+                                          .regDtime(LocalDate.now().atStartOfDay())
+                                          .build();
+
+    	if(saveInfo.getMenuParentNo() == "") {
+    		menuService.menuSave(saveInfo);
+    	} else {
+    		menuService.menuChildSave(saveInfo);
+    	}
     }
+    
 }

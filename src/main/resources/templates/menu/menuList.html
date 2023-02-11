@@ -11,55 +11,61 @@
     <div id="contents">
         <section>
             <h3 class="text-left">
-            <span>
-                <i class="fa-solid fa-circle fa-xs"></i></span>메뉴조회
-                <span>
-              <div class="float-right">
-            <button type="button" class="btn btn-primary">조회</button>
-            <button type="button" class="btn btn-primary">초기화</button>
-              </div>
-          </span>
+                <span> <i class="fa-solid fa-circle fa-xs"></i></span>메뉴조회
+<!--                    <span>-->
+<!--						<div class="float-right">-->
+<!--							<button type="button" class="btn btn-primary" id="srchBtn">조회</button>-->
+<!--							<button type="button" class="btn btn-primary" id="resetBtn">초기화</button>-->
+<!--						</div>-->
+<!--					</span>-->
             </h3>
 
             <!--SEARCH -->
-            <form id="searchForm" name="searchForm">
-                <fieldset>
-                    <div id="search_reservation">
-                        <table class="table table-bordered">
-                            <tbody>
-                            <tr>
-                                <th class="table-active">
-                                    <span>
-                                        <label th:for="revNo">메뉴명</label>
-                                    </span>
-                                </th>
-                                <td>
-                                    <span>
-                                        <input type="text" id="revNo" readonly>
-                                    </span>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </fieldset>
-            </form>
+<!--            <form id="searchForm" name="searchForm">-->
+<!--                <fieldset>-->
+<!--                    <div id="search_reservation">-->
+<!--                        <table class="table table-bordered">-->
+<!--                            <tbody>-->
+<!--                            <tr>-->
+<!--                                <th class="table-active"><span> <label-->
+<!--                                        th:for="revNo">메뉴명</label>-->
+<!--										</span></th>-->
+<!--                                <td><span> <input type="text" id="revNo" readonly>-->
+<!--										</span></td>-->
+<!--                            </tr>-->
+<!--                            </tbody>-->
+<!--                        </table>-->
+<!--                    </div>-->
+<!--                </fieldset>-->
+<!--            </form>-->
         </section>
         <!-- GRID -->
         <section>
+            <div class="grid_btns">
+                <div class="gd_btns">
+                    <button type="button" class="btn btn-primary" id="addLevelMenuBtn">
+                        <span>동일레벨행추가</span>
+                    </button>
+                    <button type="button" class="btn btn-primary" id="addLowLevelMenuBtn">
+                        <span>하위레벨행추가</span>
+                    </button>
+                </div>
+                <div class="gd_btns">
+                    <input type="text" name="menu_nm" id="menu_nm" class="input"/>
+                    <button type="button" class="btn btn-primary" id="srchFilterBtn">
+                        <span>찾기</span>
+                    </button>
+                </div>
+                <div class="gd_btns2 float-right">
+                    <button type="button" class="btn btn-primary" id="saveMenuBtn">
+                        <span>저장</span>
+                    </button>
+                </div>
+            </div>
             <div id="menuListGrid"></div>
         </section>
     </div>
 </th:block>
 </body>
 </html>
-<script th:src="@{/ts/menu/menuList.ts}"></script>
-<script th:inline="javascript">
-    window.onload = () => {
-
-        const createdGrid = initGrid();
-        const sampleData = [[${menuInfoList}]];
-        createdGrid.resetData(sampleData);
-
-    }
-</script>
+<script th:src="@{/js/menu/menuList.js}"></script>
