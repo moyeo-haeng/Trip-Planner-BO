@@ -27,7 +27,7 @@
 
         <h3>-----------------------------</h3>
 
-        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGrpCdId('DS0001').disabled(true).checked(true).commonTypeCd1('Y').build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGrpCdId('DS0001').disabled(true).checked(true).commonTypeCd1(Constant.TRUE).build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
             <span th:replace="common/fragments/CodeCheckBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
 

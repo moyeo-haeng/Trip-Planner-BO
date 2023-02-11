@@ -6,6 +6,8 @@ public class Constant {
 
     public static final String COMMONCODEBOXREQ_MODEL_ATTRIBUTE_NAME = "CommonCodeBoxReq";
     public static final String CONSTANT_MODEL_ATTRIBUTE_NAME = "Constant";
+    public static final String TRUE = "Y";
+    public static final String FALSE = "N";
 
     public static final String DS_DISP_STAT_CD 			= "DS0011";	//진행상태코드
     public static final String DS_DISP_STAT_CD_ING 		= "00";		//진행상태코드 - 구성중
