@@ -1,3 +1,6 @@
+# DB Setting
+**/src/main/resources/application-db.yml
+
 HELP.md
 .gradle
 build/
@@ -669,6 +672,3 @@ gradle-app.setting
 
 ### Querydsl
 /src/main/generated
-
-# db setting
-application-db.yml
