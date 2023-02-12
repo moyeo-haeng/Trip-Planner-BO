@@ -34,6 +34,9 @@ window.addEventListener('DOMContentLoaded', function () {
     const newGrpRow = {
         checkGrpCd: '<input type="checkbox" id="check-grp-cd" name="check-grp-cd" value="newG">'
     };
+    const newDtlRow = {
+        checkGrpCd: '<input type="checkbox" id="check-dtl-cd" name="check-dtl-cd" value="newD">'
+    };
 
     grpAppendBtn.addEventListener('click', event => {
         GrpGrid.appendRow(newGrpRow, {
@@ -73,20 +76,10 @@ const initGrpGrid = () => {
         scrollY: true,
         draggable: false,
         header: {height: 30},
+        rowHeaders: ['rowNum', 'checkbox'],
         bodyHeight: 300,
         contextMenu: null,
         columns: [
-            {
-                header: 'Chk.',
-                name: 'commonGrpCdNo',
-                align: 'center',
-                width: 20,
-                whiteSpace: 'normal',
-                editor: 'checkbox',
-                formatter: function(e) {
-                    return e.value
-                }
-            },
             {
                 header: '부서',
                 name: 'commonType',
@@ -166,6 +159,7 @@ const initDtlGrid = () => {
         scrollY: true,
         draggable: false,
         header: {height: 30},
+        rowHeaders: ['rowNum', 'checkbox'],
         bodyHeight: 300,
         contextMenu: null,
         columns: [
