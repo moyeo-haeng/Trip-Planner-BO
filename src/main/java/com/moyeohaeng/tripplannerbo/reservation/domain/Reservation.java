@@ -1,9 +1,7 @@
 package com.moyeohaeng.tripplannerbo.reservation.domain;
 
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.moyeohaeng.tripplannerbo.common.domain.BaseEntity;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,14 +10,15 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Reservation {
+public class Reservation extends BaseEntity {
 
     @Id @GeneratedValue
     private String reservation_no;
 
-    private String Reservation_divi_cd;
+    private String reservation_divi_cd;
 
     private String reservation_date;
 
@@ -28,12 +27,4 @@ public class Reservation {
     private Long reservation_qty;
 
     private Long reservation_total_amt;
-
-    private String reg_id;
-
-    private LocalDateTime reg_dtime;
-
-    private String upt_id;
-
-    private LocalDateTime upt_dtime;
 }

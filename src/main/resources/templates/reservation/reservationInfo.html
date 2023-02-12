@@ -14,8 +14,8 @@
                 <i class="fa-solid fa-circle fa-xs"></i></span>예약조회
           <span>
               <div class="float-right">
-            <button type="button" class="btn btn-primary">조회</button>
-            <button type="button" class="btn btn-primary">초기화</button>
+            <button type="button" class="btn btn-primary" id="searchBtn" name="searchBtn" th:onclick="search()">조회</button>
+            <button type="button" class="btn btn-primary" id="resetBtn" name="resetBtn" th:onclick="reset()">초기화</button>
               </div>
           </span>
         </h3>
@@ -54,7 +54,7 @@
                                   </th>
                                   <td>
                                       <span>
-                                           <input type="text" id="revNo" readonly>
+                                           <input type="text" id="revNo">
                                       </span>
                                   </td>
                                   <th class="table-active">
@@ -112,6 +112,13 @@
               </form>
           </section>
 
+          <span>
+              <div class="float-left">
+            <button type="button" class="btn btn-primary" id="addRow" name="addRow" th:onclick="addRow()">행추가</button>
+            <button type="button" class="btn btn-primary" id="delRow" name="delRow" th:onclick="deleteRow()">행삭제</button>
+              </div>
+          </span>
+
           <!-- GRID -->
           <section>
               <div id="revInfoListGrid"></div>
@@ -121,4 +128,4 @@
 </body>
 </html>
 
-<script type="module" th:src="@{/ts/reservation/reservationInfo.ts}"></script>
+<script type="text/javascript" th:src="@{/js/reservation/reservation.js}"></script>
