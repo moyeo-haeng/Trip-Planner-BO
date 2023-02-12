@@ -1,5 +1,6 @@
 package com.moyeohaeng.tripplannerbo.common.repository;
 
+import com.moyeohaeng.tripplannerbo.common.Constant;
 import com.moyeohaeng.tripplannerbo.common.domain.CommonCode;
 import com.moyeohaeng.tripplannerbo.common.domain.CommonGroupCode;
 import com.moyeohaeng.tripplannerbo.common.domain.request.CommonCodeBoxReq;
@@ -36,7 +37,8 @@ public class CommonCodeDslRepository {
                         eqCommonGrpCdId(parameter.getCommonGrpCdId()),
                         eqCommonTypeCd1(parameter.getCommonTypeCd1()),
                         eqCommonTypeCd2(parameter.getCommonTypeCd2()),
-                        eqCommonTypeCd3(parameter.getCommonTypeCd3())
+                        eqCommonTypeCd3(parameter.getCommonTypeCd3()),
+                        commonDetailCode.useYn.eq(Constant.TRUE)
                 )
                 .fetch();
 

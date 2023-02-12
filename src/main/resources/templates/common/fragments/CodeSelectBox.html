@@ -7,19 +7,21 @@
 <body>
 <!--/* 조회된 값이 없을경우 표시하지 않음 */-->
 <th:block th:fragment="combo(params)">
-    <!--/* 텍스트 고정일 경우 조회된 값이 한개이면 input hidden 처리 */-->
-    <th:block th:if="${#lists.size(params.commonCodes) == 1}" th:each="data : ${params.commonCodes}">
-        <span class="txt" th:text="${data.commonCdNm}">코드 값</span>
+    <!--/* 조회된 값이 한개이면 input hidden 처리 */-->
+    <th:block th:if="${#lists.size(params.commonCodes) == 1}"
+              th:each="data : ${params.commonCodes}"
+              th:with="dtl = ${data.commonDetailCode}">
+        <span class="txt" th:text="${dtl.commonCdNm}">코드 값</span>
         <input type="hidden" th:id="${params.id}"
-               th:name="${params.commonCodes[0].commonCode.commonGroupCdNm}"
-               th:value="${data.commonCdId}"  />
+               th:name="${params.commonCodes[0].commonGroupCode.commonGrpCdId}"
+               th:value="${dtl.commonCdId}"  />
     </th:block>
 
-    <!--/* 텍스트 고정이 아니거나 조회된 값이 여러개 일 경우 selectbox 처리 */-->
+    <!--/* 조회된 값이 여러개 일 경우 selectbox 처리 */-->
     <th:block th:if="${#lists.size(params.commonCodes) > 1}">
 			<span class="slt">
 				<select th:id="${params.id}"
-                        th:name="${params.commonCodes[0].commonCode.commonGroupCdNm}"
+                        th:name="${params.commonCodes[0].commonGroupCode.commonGrpCdId}"
                         th:disabled="${params.isDisabled()}">
 
 					<!--/* 기본값 */-->
@@ -27,9 +29,9 @@
                             th:text="${params.defaultText}" value=""></option>
 
                     /* DATA LIST */
-					<option th:each="codes : ${params.commonCodes}"  th:with="data = ${codes.commonCode}"
-                            th:value="${data.commonCdId}"
-                            th:text="${data.commonCdNm}">
+					<option th:each="codes : ${params.commonCodes}"  th:with="commonDetailCode = ${codes.commonDetailCode}"
+                            th:value="${commonDetailCode.commonCdId}"
+                            th:text="${commonDetailCode.commonCdNm}">
 					</option>
 
 				</select>
