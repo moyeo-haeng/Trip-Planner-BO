@@ -5,6 +5,9 @@ server:
 spring:
   profiles:
     include: db
+  messages:
+    basename: messages.messages,config.i18n.messages
+    encoding: utf-8
 
   #  jpa:
   #    database: mysql

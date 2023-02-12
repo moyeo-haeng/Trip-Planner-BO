@@ -37,4 +37,10 @@ public class CommonController {
     public String layerPopupTest() {
         return "common/layerPopup";
     }
+
+    @GetMapping("/message")
+    public String messagePageRender(Model model) {
+        model.addAttribute("price" , 1000);
+        return "sample/message";
+    }
 }
