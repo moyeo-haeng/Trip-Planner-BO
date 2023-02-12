@@ -23,7 +23,8 @@ public class ReservationController {
         return "reservation/reservationInfo";
     }
 
-    @PostMapping("/findReservationInfo")
+    @GetMapping("/findReservationInfo")
+    @ResponseBody
     public List<Reservation>  findReservationInfo() {
         return reservationService.findReservationInfo();
     }
