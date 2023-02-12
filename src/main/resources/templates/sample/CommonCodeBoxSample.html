@@ -9,35 +9,51 @@
 <body>
     <div class="container">
         <h2>&lt;CHECK BOX&gt;</h2>
-        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGroupCdId('DS0001').defaultOption(false).build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGrpCdId('DS0001').defaultOption(false).build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
             <span th:replace="common/fragments/CodeCheckBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
 
         <h3>-----------------------------</h3>
 
-        <th:block th:with="code =${CommonCodeBoxReq.builder().id('chnlCd').commonGroupCdId('ST0001').build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('chnlCd').commonGrpCdId('ST0001').build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
             <span th:replace="common/fragments/CodeCheckBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
 
         <h3>-----------------------------</h3>
 
-        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGroupCdId('DS0001').disabled(true).checked(true).build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGrpCdId('DS0001').disabled(true).checked(true).build()}"> <!-- code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
             <span th:replace="common/fragments/CodeCheckBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
 
-        <h2>&lt;SELECT BOX&gt;</h2>
+        <h3>-----------------------------</h3>
+
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGrpCdId('DS0001').disabled(true).checked(true).commonTypeCd1(Constant.TRUE).build()}"> <!--code =${CommonCodeReq.builder().id('statCd').commCd('ST0001').build()} -->
+            <span th:replace="common/fragments/CodeCheckBox :: combo(${@commonUtil.createElement(code)})"></span>
+        </th:block>
+
+       <h2>&lt;SELECT BOX&gt;</h2>
+        <h3>- 조회된 공통코드가 1개인 경우 값 고정</h3>
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('chnlCd').commonGrpCdId('ST0001').build()}">
+            <span th:replace="common/fragments/CodeSelectBox :: combo(${@commonUtil.createElement(code)})"></span>
+        </th:block>
+
         <h3>- 기본</h3>
-        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGroupCdId('DS0001').build()}">
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('mallReqStatCd').commonGrpCdId('CT0001').build()}">
             <span th:replace="common/fragments/CodeSelectBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
 
         <h3>- disabled</h3>
-        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGroupCdId('DS0001').disabled(true).build()}">
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('mallReqStatCd').commonGrpCdId('CT0001').disabled(true).build()}">
             <span th:replace="common/fragments/CodeSelectBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
 
         <h3>- defaultText</h3>
-        <th:block th:with="code =${CommonCodeBoxReq.builder().id('statCd').commonGroupCdId('DS0001').defaultText('전시상태코드').build()}">
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('mallReqStatCd').commonGrpCdId('CT0001').defaultText('몰문의상태코드').build()}">
+            <span th:replace="common/fragments/CodeSelectBox :: combo(${@commonUtil.createElement(code)})"></span>
+        </th:block>
+
+        <h3>- 사용구분자</h3>
+        <th:block th:with="code =${CommonCodeBoxReq.builder().id('mallReqStatCd').commonGrpCdId('CT0001').commonTypeCd1(Constant.FALSE).commonTypeCd2(Constant.TRUE).build()}">
             <span th:replace="common/fragments/CodeSelectBox :: combo(${@commonUtil.createElement(code)})"></span>
         </th:block>
 

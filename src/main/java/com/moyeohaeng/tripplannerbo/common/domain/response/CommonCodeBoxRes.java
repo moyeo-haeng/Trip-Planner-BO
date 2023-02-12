@@ -1,6 +1,8 @@
 package com.moyeohaeng.tripplannerbo.common.domain.response;
 
 import com.moyeohaeng.tripplannerbo.common.domain.CommonCode;
+import com.moyeohaeng.tripplannerbo.common.domain.CommonDetailCode;
+import com.moyeohaeng.tripplannerbo.common.domain.CommonGroupCode;
 import lombok.*;
 
 import java.util.List;
@@ -17,7 +19,8 @@ public class CommonCodeBoxRes {
     private boolean defaultOption; // '전체' on/off
     private boolean checked; // 체크 여부
     private boolean disabled; // 수정 불가 여부
-    private CommonCode commonCode;
+    private CommonDetailCode commonDetailCode;
+    private CommonGroupCode commonGroupCode;
     List<CommonCodeBoxRes> commonCodes; // 결과 코드 값
 
 }

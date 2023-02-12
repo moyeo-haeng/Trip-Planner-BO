@@ -1,6 +1,7 @@
 package com.moyeohaeng.tripplannerbo.common.domain.request;
 
 import com.moyeohaeng.tripplannerbo.common.domain.CommonCode;
+import com.moyeohaeng.tripplannerbo.common.domain.CommonDetailCode;
 import lombok.*;
 
 import javax.persistence.Id;
@@ -12,22 +13,11 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommonCodeBoxReq {
-    @Id
-    private int commonNo;
-    private String commonType;
     private String commonCdId;
-    private String commonCdNm;
-    private String commonCdDesc;
-    private String commonGroupCdId;
-    private String commonGroupCdNm;
-    private String commonGroupCdDesc;
-    private int commonSortSeq;
-    private String commonCdEditYn;
-    private String useYn;
-    private String regId;
-    private LocalDateTime regDtime;
-    private String uptId;
-    private LocalDateTime uptDtime;
+    private String commonGrpCdId;
+    private String commonTypeCd1;
+    private String commonTypeCd2;
+    private String commonTypeCd3;
 
     private String id;  // 사용자 설정 id 요소 값
 
@@ -36,25 +26,17 @@ public class CommonCodeBoxReq {
     @Builder.Default private boolean checked = false; // 체크 여부
     @Builder.Default private boolean disabled = false; // 수정 불가 여부
 
-    public CommonCode toCommonCode() {
+/*    public CommonDetailCode toCommonCode() {
 
-        return CommonCode.builder()
-                .commonNo(commonNo)
-                .commonType(commonType)
+        return CommonDetailCode.builder()
+                .commonCdNo(commonCdNo)
+                .commonGrpCdNo(commonGrpCdNo)
                 .commonCdId(commonCdId)
                 .commonCdNm(commonCdNm)
                 .commonCdDesc(commonCdDesc)
-                .commonGroupCdId(commonGroupCdId)
-                .commonGroupCdNm(commonGroupCdNm)
-                .commonGroupCdDesc(commonGroupCdDesc)
                 .commonSortSeq(commonSortSeq)
-                .commonCdEditYn(commonCdEditYn)
                 .useYn(useYn)
-                .regId(regId)
-                .regDtime(regDtime)
-                .uptId(uptId)
-                .uptDtime(uptDtime)
                 .build();
-    }
+    }*/
 
 }

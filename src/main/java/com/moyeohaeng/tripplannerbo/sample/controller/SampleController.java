@@ -14,6 +14,7 @@ public class SampleController extends CommonUtility {
     @GetMapping("sample")
     public String Sample(){
 
+        // 데이터 저장
 //        test();
 
 //        List<SampleModel> sampleModelList = sampleService.sample();

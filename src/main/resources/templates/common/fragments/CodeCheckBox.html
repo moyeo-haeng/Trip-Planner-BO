@@ -12,7 +12,7 @@
         <span th:if="${params.isDefaultOption() and #lists.size(params.commonCodes) > 1}">
             <input type="checkbox"
                    th:id="|${params.id}00|"
-                   th:name="${params.commonCodes[0].commonCode.commonGroupCdId}"
+                   th:name="${params.commonCodes[0].commonGroupCode.commonGrpCdId}"
                    th:disabled="${params.isDisabled()}"
                    th:checked="${params.checked}"
                    value="">
@@ -20,15 +20,16 @@
         </span>
 <!--          th:checked="${params.checked} ? true : ${params.isEqualsValusAll(params.commonCodes)}"-->
 
-        <span th:each="conts : ${params.commonCodes}" th:with="commonCode = ${conts.commonCode}">
+        <span th:each="conts : ${params.commonCodes}" th:with="commonDetailCode = ${conts.commonDetailCode},
+                                                               commonGroupCode = ${conts.commonGroupCode}">
          <!--/* DATA LIST */-->
             <input type="checkbox"
-                   th:id="|${params.id}${commonCode.commonNo}|"
-                   th:name="${commonCode.commonGroupCdId}"
+                   th:id="|${params.id}${commonDetailCode.commonCdNo}|"
+                   th:name="${commonGroupCode.commonGrpCdId}"
                    th:disabled="${params.isDisabled()}"
                    th:checked="${params.checked}"
-                   th:value="${commonCode.commonCdId}">
-            <label th:for="|${params.id}${commonCode.commonNo}|" th:text="${commonCode.commonCdNm}"></label>
+                   th:value="${commonDetailCode.commonCdId}">
+            <label th:for="|${params.id}${commonDetailCode.commonCdNo}|" th:text="${commonDetailCode.commonCdNm}"></label>
         </span>
     </th:block>
 
